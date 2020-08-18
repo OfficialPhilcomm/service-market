@@ -7,4 +7,41 @@ main {
   z-index: 0;
 
   padding: 80px 20px 20px 20px;
+
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "all-requests user-info" "all-requests own-requests" "more-information own-requests";
+  grid-gap: 20px;
+}
+
+.all-requests,
+.more-information,
+.user-info,
+.own-requests {
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  overflow-y: auto;
+}
+
+.all-requests {
+  grid-area: all-requests;
+}
+
+.more-information {
+  grid-area: more-information;
+}
+
+.user-info {
+  grid-area: user-info;
+}
+
+.own-requests {
+  grid-area: own-requests;
 }
