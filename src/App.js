@@ -1,20 +1,26 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/layout/navbar/NavBar";
 import Main from "./components/layout/main/Main";
+import LoginContext from "./contexts/LoginContext";
 
-import LiveData from "./components/LiveData";
+export default class App extends React.Component {
+  state = {
+    loginStatus: {
+      logged_in: false,
+    },
+  };
 
-const LoginContext = React.createContext("tester123");
+  async componentDidMount() {}
 
-function App() {
-  return (
-    <div className="App">
-      <NavBar />
-      <Main />
-    </div>
-  );
+  render() {
+    return (
+      <LoginContext.Provider value={this.state.loginStatus}>
+        <div className="App">
+          <NavBar />
+          <Main />
+        </div>
+      </LoginContext.Provider>
+    );
+  }
 }
-
-export default App;

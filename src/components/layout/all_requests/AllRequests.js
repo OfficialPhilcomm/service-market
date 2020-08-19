@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import OrderBox from "../order/OrderBox";
+import LoginContext from "../../../contexts/LoginContext";
 
 export default class AllRequests extends Component {
   state = {
@@ -23,5 +24,3 @@ export default class AllRequests extends Component {
     );
   }
 }
-
-AllRequests.contextType = LoginContext;
