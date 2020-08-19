@@ -1,16 +1,20 @@
-import React, { Component } from "react";
-import LoginContext from "../../../contexts/LoginContext";
+import React, { Component, useState, useContext } from "react";
+import { AuthenticationContext } from "../../../contexts/AuthenticationContext";
+import LoginLogout from "../LoginLogout";
 
 export default class UserInfo extends Component {
+  static contextType = AuthenticationContext;
+
+  componentDidMount() {}
+
   render() {
+    const { logged_in, username } = this.context;
+
     return (
-      <LoginContext.Consumer>
-        {(data) => (
-          <div className="user-info">
-            <span>{data.logged_in ? data.username : "Not logged in"}</span>
-          </div>
-        )}
-      </LoginContext.Consumer>
+      <div className="user-info">
+        <span>{logged_in ? username : "Not logged in"}</span>
+        <LoginLogout />
+      </div>
     );
   }
 }

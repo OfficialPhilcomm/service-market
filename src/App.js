@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import NavBar from "./components/layout/navbar/NavBar";
 import Main from "./components/layout/main/Main";
-import LoginContext from "./contexts/LoginContext";
+import AuthenticationContextProvider from "./contexts/AuthenticationContext";
 
 export default class App extends React.Component {
   state = {
@@ -15,12 +15,12 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <LoginContext.Provider value={this.state.loginStatus}>
+      <AuthenticationContextProvider value={{ logged_in: true }}>
         <div className="App">
           <NavBar />
           <Main />
         </div>
-      </LoginContext.Provider>
+      </AuthenticationContextProvider>
     );
   }
 }
