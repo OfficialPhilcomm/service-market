@@ -31,19 +31,6 @@ class AuthenticationContextProvider extends Component {
         username: result.username,
       });
     }
-
-    /*if (!response.data.token_valid) {
-      const loginResponse = await axios({
-        method: "post",
-        url: "https://philcomm.dev/servicemarket/api/login.php",
-        data: {
-          user: "Philcomm",
-          pass: "",
-        },
-      });
-      console.log(loginResponse.data);
-      console.log(this.context);
-    }*/
   };
 
   logout = async () => {

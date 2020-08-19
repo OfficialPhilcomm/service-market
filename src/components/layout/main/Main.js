@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import AllRequests from "../all_requests/AllRequests";
+import AllOrders from "../all_orders/AllOrders";
 import UserInfo from "../userinfo/UserInfo";
 
 import "./Main.css";
@@ -13,7 +13,7 @@ export default class Main extends Component {
   render() {
     return (
       <main>
-        <AllRequests />
+        <AllOrders />
         <div className="more-information">more-information</div>
         <UserInfo />
         <div className="own-requests">own-requests</div>
