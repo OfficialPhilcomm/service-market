@@ -7,10 +7,11 @@ export default class AllOrders extends Component {
   static contextType = AuthenticationContext;
 
   state = {
-    orderList: null,
+    orderList: [],
   };
 
-  async componentDidMount() {
+  requestAllOrders = async () => {
+    console.log(this.context.auth_token);
     const response = await axios({
       method: "post",
       url: "https://philcomm.dev/servicemarket/api/all_orders.php",
@@ -26,27 +27,23 @@ export default class AllOrders extends Component {
 
     console.log(result);
 
-    if (result.success) {
-      console.log(response.data);
-      this.setState({
-        logged_in: true,
-        auth_token: result.auth_token,
-        username: result.username,
-      });
-    }
-  }
+    this.setState({ orderList: result.orders });
+  };
 
   render() {
     const { logged_in } = this.context;
 
+    //const allOrders = this.requestAllOrders();
+
     return (
       <div className="all-requests">
+        <button onClick={this.requestAllOrders}>Refresh</button>
         {logged_in ? (
           <React.Fragment>
-            {this.state.orderList ? (
+            {this.state.orderList && this.state.orderList.length > 0 ? (
               <React.Fragment>
                 {this.state.orderList.map((order) => (
-                  <OrderBox />
+                  <OrderBox order={order} />
                 ))}
               </React.Fragment>
             ) : (
