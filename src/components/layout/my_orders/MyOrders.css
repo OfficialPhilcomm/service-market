@@ -1,0 +1,28 @@
+.own-requests {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.own-requests .title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+
+.own-requests .title .add {
+  margin-left: auto;
+}
+
+.own-requests .my-orders-container {
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+
+  background-color: red;
+}

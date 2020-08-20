@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import AllOrders from "../all_orders/AllOrders";
 import UserInfo from "../userinfo/UserInfo";
+import MyOrders from "../my_orders/MyOrders";
 
 import "./Main.css";
 import axios from "axios";
@@ -16,7 +17,7 @@ export default class Main extends Component {
         <AllOrders />
         <div className="more-information">more-information</div>
         <UserInfo />
-        <div className="own-requests">own-requests</div>
+        <MyOrders />
       </main>
     );
   }
