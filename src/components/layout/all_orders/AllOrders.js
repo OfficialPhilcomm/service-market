@@ -10,6 +10,15 @@ export default class AllOrders extends Component {
     orderList: [],
   };
 
+  callback = () => {
+    console.log("callback called back");
+  };
+
+  componentDidMount() {
+    console.log(AuthenticationContext);
+    //this.context.state.bind(this.callback);
+  }
+
   requestAllOrders = async () => {
     console.log(this.context.auth_token);
     const response = await axios({
