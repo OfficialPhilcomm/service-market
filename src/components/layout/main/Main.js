@@ -5,7 +5,6 @@ import UserInfo from "../userinfo/UserInfo";
 import MyOrders from "../my_orders/MyOrders";
 
 import "./Main.css";
-import axios from "axios";
 import { AuthenticationContext } from "../../../contexts/AuthenticationContext";
 
 export default class Main extends Component {
