@@ -5,10 +5,10 @@ import UserInfo from "../userinfo/UserInfo";
 import MyOrders from "../my_orders/MyOrders";
 
 import "./Main.css";
-import { AuthenticationContext } from "../../../contexts/AuthenticationContext";
+import { ApplicationContext } from "../../../contexts/ApplicationContext";
 
 export default class Main extends Component {
-  static contextType = AuthenticationContext;
+  static contextType = ApplicationContext;
 
   render() {
     return (

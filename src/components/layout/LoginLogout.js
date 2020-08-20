@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { AuthenticationContext } from "../../contexts/AuthenticationContext";
+import { ApplicationContext } from "../../contexts/ApplicationContext";
 
 export default class LoginLogout extends Component {
-  static contextType = AuthenticationContext;
+  static contextType = ApplicationContext;
 
   render() {
     const { logged_in, login, logout } = this.context;

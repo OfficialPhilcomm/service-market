@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { AuthenticationContext } from "../../../contexts/AuthenticationContext";
+import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import LoginLogout from "../LoginLogout";
 
 export default class UserInfo extends Component {
-  static contextType = AuthenticationContext;
+  static contextType = ApplicationContext;
 
   componentDidMount() {}
 

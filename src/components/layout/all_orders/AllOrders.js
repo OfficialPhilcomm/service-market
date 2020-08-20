@@ -1,57 +1,25 @@
 import React, { Component } from "react";
+import "./AllOrders.css";
 import axios from "axios";
 import OrderBox from "../order/OrderBox";
-import { AuthenticationContext } from "../../../contexts/AuthenticationContext";
+import { ApplicationContext } from "../../../contexts/ApplicationContext";
 
 export default class AllOrders extends Component {
-  static contextType = AuthenticationContext;
-
-  state = {
-    orderList: [],
-  };
-
-  callback = () => {
-    console.log("callback called back");
-  };
-
-  componentDidMount() {
-    console.log(AuthenticationContext);
-    //this.context.state.bind(this.callback);
-  }
-
-  requestAllOrders = async () => {
-    console.log(this.context.auth_token);
-    const response = await axios({
-      method: "post",
-      url: "https://philcomm.dev/servicemarket/api/all_orders.php",
-      data: {},
-      headers: {
-        "Content-Type": "application/json",
-        "Api-Token": "486ce77a-e1f9-11ea-af0d-001a4a150180",
-        "Auth-Token": this.context.auth_token,
-      },
-    });
-
-    const result = response.data;
-
-    console.log(result);
-
-    this.setState({ orderList: result.orders });
-  };
+  static contextType = ApplicationContext;
 
   render() {
     const { logged_in } = this.context;
-
-    //const allOrders = this.requestAllOrders();
+    const { all_orders } = this.context.orders;
+    const { request_all_orders } = this.context;
 
     return (
       <div className="all-requests">
-        <button onClick={this.requestAllOrders}>Refresh</button>
+        <button onClick={request_all_orders}>Refresh</button>
         {logged_in ? (
           <React.Fragment>
-            {this.state.orderList && this.state.orderList.length > 0 ? (
+            {all_orders && all_orders.length > 0 ? (
               <React.Fragment>
-                {this.state.orderList.map((order) => (
+                {all_orders.map((order) => (
                   <OrderBox order={order} />
                 ))}
               </React.Fragment>
