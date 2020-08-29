@@ -6,7 +6,7 @@ class BackendAPI {
   static async login(un, pw) {
     const response = await axios({
       method: "post",
-      url: this.BASE_URL + "login.php",
+      url: this.BASE_URL + "auth/login.php",
       data: {
         user: un,
         pass: pw,
@@ -23,7 +23,7 @@ class BackendAPI {
   static async requestMyOrders(auth_token) {
     const response = await axios({
       method: "post",
-      url: this.BASE_URL + "my_orders.php",
+      url: this.BASE_URL + "orders/my_orders.php",
       data: {},
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ class BackendAPI {
   static async requestAllOrders(auth_token) {
     const response = await axios({
       method: "post",
-      url: this.BASE_URL + "all_orders.php",
+      url: this.BASE_URL + "orders/all_orders.php",
       data: {},
       headers: {
         "Content-Type": "application/json",
