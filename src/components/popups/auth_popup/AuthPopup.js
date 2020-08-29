@@ -11,6 +11,10 @@ export default class AuthPopup extends Component {
     loginOpen: true,
   };
 
+  componentDidMount() {
+    this.loginUsername.focus();
+  }
+
   handleKeyPress = (event) => {
     if (event.key === "Enter") {
       this.login();
