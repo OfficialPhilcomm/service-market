@@ -8,8 +8,7 @@ export default class AllOrders extends Component {
   static contextType = ApplicationContext;
 
   render() {
-    const { logged_in } = this.context;
-    const { all_orders } = this.context.orders;
+    const { logged_in, all_orders } = this.context;
     const { request_all_orders } = this.context;
 
     return (

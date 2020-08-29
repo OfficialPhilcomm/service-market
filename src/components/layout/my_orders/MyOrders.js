@@ -7,8 +7,7 @@ export default class MyOrders extends Component {
   static contextType = ApplicationContext;
 
   render() {
-    const { logged_in } = this.context;
-    const { my_orders } = this.context.orders;
+    const { logged_in, my_orders } = this.context;
 
     return (
       <div className="own-requests">

@@ -1,5 +1,6 @@
 import React, { Component, createContext } from "react";
 import axios from "axios";
+import BackendAPI from "../api/BackendAPI";
 
 export const ApplicationContext = createContext();
 
@@ -8,10 +9,8 @@ class ApplicationContextProvider extends Component {
     logged_in: false,
     username: null,
     auth_token: null,
-    orders: {
-      my_oders: [],
-      all_orders: [],
-    },
+    my_oders: [],
+    all_orders: [],
   };
 
   login = async (u, p) => {
@@ -48,10 +47,8 @@ class ApplicationContextProvider extends Component {
       logged_in: false,
       username: null,
       auth_token: null,
-      orders: {
-        my_orders: [],
-        all_orders: [],
-      },
+      my_orders: [],
+      all_orders: [],
     });
   };
 
@@ -69,30 +66,13 @@ class ApplicationContextProvider extends Component {
 
     const result = response.data;
 
-    const orders = this.state.orders;
-    orders.all_orders = result.orders;
-
-    this.setState({ orders: orders });
+    this.setState({ all_orders: result.orders });
   };
 
   request_my_orders = async () => {
-    const response = await axios({
-      method: "post",
-      url: "https://philcomm.dev/servicemarket/api/my_orders.php",
-      data: {},
-      headers: {
-        "Content-Type": "application/json",
-        "Api-Token": "486ce77a-e1f9-11ea-af0d-001a4a150180",
-        "Auth-Token": this.state.auth_token,
-      },
-    });
+    const result = await BackendAPI.requestMyOrders(this.state.auth_token);
 
-    const result = response.data;
-
-    const orders = this.state.orders;
-    orders.my_orders = result.orders;
-
-    this.setState({ orders: orders });
+    this.setState({ my_orders: result.orders });
   };
 
   render() {
