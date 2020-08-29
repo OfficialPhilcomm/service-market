@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import "../Popup.css";
-import CloseablePopup from "../CloseablePopup";
 import "./AuthPopup.css";
 import Popup from "../Popup";
 
