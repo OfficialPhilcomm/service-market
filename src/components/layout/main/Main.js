@@ -6,6 +6,7 @@ import MyOrders from "../my_orders/MyOrders";
 
 import "./Main.css";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
+import AuthPopup from "../../popups/AuthPopup";
 
 export default class Main extends Component {
   static contextType = ApplicationContext;
@@ -13,6 +14,11 @@ export default class Main extends Component {
   render() {
     return (
       <main>
+        {!this.context.logged_in ? (
+          <AuthPopup />
+        ) : (
+          <React.Fragment></React.Fragment>
+        )}
         <AllOrders />
         <div className="more-information">more-information</div>
         <UserInfo />

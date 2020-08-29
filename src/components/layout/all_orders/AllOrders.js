@@ -30,7 +30,6 @@ export default class AllOrders extends Component {
         ) : (
           <span>Log in to see orders</span>
         )}
-        <AuthPopup />
       </div>
     );
   }
