@@ -4,7 +4,6 @@ import { ReactComponent as PokeballImage } from "../../../img/pokeball.svg";
 
 export default class OrderBox extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="order-box">
         <PokeballImage className="sprite" />

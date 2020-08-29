@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./AllOrders.css";
-import axios from "axios";
 import OrderBox from "../order/OrderBox";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 

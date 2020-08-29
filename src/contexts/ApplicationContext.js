@@ -1,5 +1,4 @@
 import React, { Component, createContext } from "react";
-import axios from "axios";
 import BackendAPI from "../api/BackendAPI";
 
 export const ApplicationContext = createContext();

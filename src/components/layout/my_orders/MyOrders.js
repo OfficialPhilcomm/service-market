@@ -11,8 +11,12 @@ export default class MyOrders extends Component {
     createPopupOpen: false,
   };
 
-  switchCreatePopupOpen = () => {
-    this.setState({ createPopupOpen: !this.state.createPopupOpen });
+  openCreatePopup = () => {
+    this.setState({ createPopupOpen: true });
+  };
+  closeCreatePopup = () => {
+    console.log("try to close");
+    this.setState({ createPopupOpen: false });
   };
 
   render() {
@@ -20,10 +24,14 @@ export default class MyOrders extends Component {
 
     return (
       <div className="own-requests">
-        {this.state.createPopupOpen ? <CreateOrderPopup /> : <React.Fragment />}
+        {this.state.createPopupOpen ? (
+          <CreateOrderPopup closeCallback={this.closeCreatePopup} />
+        ) : (
+          <React.Fragment />
+        )}
         <div className="title">
           <span>This is the title</span>
-          <button className="add" onClick={this.switchCreatePopupOpen}>
+          <button className="add" onClick={this.openCreatePopup}>
             add
           </button>
         </div>
