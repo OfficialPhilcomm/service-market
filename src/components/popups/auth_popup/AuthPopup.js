@@ -11,6 +11,12 @@ export default class AuthPopup extends Component {
     loginOpen: true,
   };
 
+  handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      this.login();
+    }
+  };
+
   switchLoginOpen = () => {
     this.setState({ loginOpen: !this.state.loginOpen });
   };
@@ -47,6 +53,7 @@ export default class AuthPopup extends Component {
                     <input
                       type="text"
                       name="username"
+                      onKeyPress={this.handleKeyPress}
                       ref={(input) => (this.loginUsername = input)}
                     />
                   </td>
@@ -57,6 +64,7 @@ export default class AuthPopup extends Component {
                     <input
                       type="text"
                       name="password"
+                      onKeyPress={this.handleKeyPress}
                       ref={(input) => (this.loginPassword = input)}
                     />
                   </td>
