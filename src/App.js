@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./components/layout/navbar/NavBar";
 import Main from "./components/layout/main/Main";
 import ApplicationContextProvider from "./contexts/ApplicationContext";
+import PokeAPI from "./api/PokeAPI";
 
 export default class App extends React.Component {
   state = {
@@ -11,7 +12,9 @@ export default class App extends React.Component {
     },
   };
 
-  async componentDidMount() {}
+  async componentDidMount() {
+    PokeAPI.requestPokemonList();
+  }
 
   render() {
     return (
