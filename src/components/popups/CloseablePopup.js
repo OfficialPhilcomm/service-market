@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Popup from "./Popup";
+import { ReactComponent as CloseButton } from "../../img/times-circle-solid.svg";
 
 export default class CloseablePopup extends Component {
   closePopup = () => {
@@ -9,9 +10,9 @@ export default class CloseablePopup extends Component {
   render() {
     return (
       <Popup>
-        <div className="close-button" onClick={this.closePopup}>
+        <CloseButton className="close-button" onClick={this.closePopup}>
           Close
-        </div>
+        </CloseButton>
         {this.props.children}
       </Popup>
     );

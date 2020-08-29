@@ -23,6 +23,17 @@
   position: relative;
 }
 
+.popup .close-button {
+  position: absolute;
+
+  top: 5px;
+  right: 5px;
+
+  cursor: pointer;
+
+  height: 18px;
+}
+
 .popup .content {
   width: 100%;
 
