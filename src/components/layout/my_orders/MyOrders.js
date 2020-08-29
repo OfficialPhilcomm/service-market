@@ -30,7 +30,7 @@ export default class MyOrders extends Component {
           <React.Fragment />
         )}
         <div className="title">
-          <span>This is the title</span>
+          <span>My orders</span>
           <AddIcon className="add" onClick={this.openCreatePopup} />
         </div>
         <div className="my-orders-container">

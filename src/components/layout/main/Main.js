@@ -11,6 +11,10 @@ import AuthPopup from "../../popups/auth_popup/AuthPopup";
 export default class Main extends Component {
   static contextType = ApplicationContext;
 
+  componentDidMount() {
+    this.context.login("Philcomm", "");
+  }
+
   render() {
     return (
       <main>
