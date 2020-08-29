@@ -20,7 +20,7 @@ export default class MyOrders extends Component {
   };
 
   render() {
-    const { logged_in, my_orders } = this.context;
+    const { logged_in, my_orders, accepted_orders } = this.context;
 
     return (
       <div className="own-requests">
@@ -44,6 +44,16 @@ export default class MyOrders extends Component {
                 </React.Fragment>
               ) : (
                 <div>No orders found</div>
+              )}
+              {accepted_orders.length > 0 ? (
+                <React.Fragment>
+                  <div className="title">Accepted orders</div>
+                  {accepted_orders.map((order) => (
+                    <OrderBox key={order.id} order={order} />
+                  ))}
+                </React.Fragment>
+              ) : (
+                <React.Fragment />
               )}
             </React.Fragment>
           ) : (
