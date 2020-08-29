@@ -9,6 +9,7 @@ class ApplicationContextProvider extends Component {
     username: null,
     auth_token: null,
     my_oders: [],
+    accepted_orders: [],
     all_orders: [],
   };
 

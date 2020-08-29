@@ -8,12 +8,25 @@
   padding: 20px 10px;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-.order-box .sprite {
+.order-box .details {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+}
+
+.order-box .details .sprite {
   width: 96px;
   height: 96px;
+}
+
+.order-box .buttons {
+  width: 100%;
 }
