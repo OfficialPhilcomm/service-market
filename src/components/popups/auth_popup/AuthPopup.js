@@ -3,6 +3,7 @@ import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import "../Popup.css";
 import CloseablePopup from "../CloseablePopup";
 import "./AuthPopup.css";
+import Popup from "../Popup";
 
 export default class AuthPopup extends Component {
   static contextType = ApplicationContext;
@@ -30,7 +31,7 @@ export default class AuthPopup extends Component {
 
   render() {
     return (
-      <CloseablePopup>
+      <Popup>
         <div className="content">
           <span
             className="auth-popup-register-switch"
@@ -82,7 +83,7 @@ export default class AuthPopup extends Component {
             <button>Register</button>
           )}
         </div>
-      </CloseablePopup>
+      </Popup>
     );
   }
 }
