@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./OrderBox.css";
-import { ReactComponent as PokeballImage } from "../../../pokeball.svg";
+import { ReactComponent as PokeballImage } from "../../../img/pokeball.svg";
 
 export default class OrderBox extends Component {
   render() {
