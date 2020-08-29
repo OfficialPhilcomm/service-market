@@ -3,7 +3,6 @@ import "./AllOrders.css";
 import axios from "axios";
 import OrderBox from "../order/OrderBox";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
-import AuthPopup from "../../popups/AuthPopup";
 
 export default class AllOrders extends Component {
   static contextType = ApplicationContext;

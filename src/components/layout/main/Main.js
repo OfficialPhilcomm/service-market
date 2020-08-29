@@ -6,7 +6,7 @@ import MyOrders from "../my_orders/MyOrders";
 
 import "./Main.css";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
-import AuthPopup from "../../popups/AuthPopup";
+import AuthPopup from "../../popups/auth_popup/AuthPopup";
 
 export default class Main extends Component {
   static contextType = ApplicationContext;
