@@ -10,9 +10,7 @@ export default class CloseablePopup extends Component {
   render() {
     return (
       <Popup>
-        <CloseButton className="close-button" onClick={this.closePopup}>
-          Close
-        </CloseButton>
+        <CloseButton className="close-button" onClick={this.closePopup} />
         {this.props.children}
       </Popup>
     );

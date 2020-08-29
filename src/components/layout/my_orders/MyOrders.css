@@ -16,6 +16,9 @@
 
 .own-requests .title .add {
   margin-left: auto;
+  height: 16px;
+
+  cursor: pointer;
 }
 
 .own-requests .my-orders-container {
@@ -23,6 +26,5 @@
   width: 100%;
   flex-grow: 1;
   overflow-y: auto;
-
   background-color: white;
 }

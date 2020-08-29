@@ -18,7 +18,7 @@ export default class AllOrders extends Component {
             {all_orders && all_orders.length > 0 ? (
               <React.Fragment>
                 {all_orders.map((order) => (
-                  <OrderBox order={order} />
+                  <OrderBox key={order.id} order={order} />
                 ))}
               </React.Fragment>
             ) : (

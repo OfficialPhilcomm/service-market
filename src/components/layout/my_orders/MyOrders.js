@@ -3,6 +3,7 @@ import "./MyOrders.css";
 import OrderBox from "../order/OrderBox";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import CreateOrderPopup from "../../popups/create_order_popup/CreateOrderPopup";
+import { ReactComponent as AddIcon } from "../../../img/plus-solid.svg";
 
 export default class MyOrders extends Component {
   static contextType = ApplicationContext;
@@ -30,9 +31,7 @@ export default class MyOrders extends Component {
         )}
         <div className="title">
           <span>This is the title</span>
-          <button className="add" onClick={this.openCreatePopup}>
-            add
-          </button>
+          <AddIcon className="add" onClick={this.openCreatePopup} />
         </div>
         <div className="my-orders-container">
           {logged_in ? (
@@ -40,7 +39,7 @@ export default class MyOrders extends Component {
               {my_orders && my_orders.length > 0 ? (
                 <React.Fragment>
                   {my_orders.map((order) => (
-                    <OrderBox order={order} />
+                    <OrderBox key={order.id} order={order} />
                   ))}
                 </React.Fragment>
               ) : (
