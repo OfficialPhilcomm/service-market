@@ -14,7 +14,7 @@ class ApplicationContextProvider extends Component {
   };
 
   login = async (u, p) => {
-    const result = BackendAPI.login("Philcomm", "");
+    const result = await BackendAPI.login("Philcomm", "");
 
     if (result.success) {
       this.setState({

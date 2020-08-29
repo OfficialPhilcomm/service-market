@@ -1,10 +1,12 @@
 import axios from "axios";
 
 class BackendAPI {
+  static BASE_URL = "https://philcomm.dev/servicemarket/api/";
+
   static async login(un, pw) {
     const response = await axios({
       method: "post",
-      url: "https://philcomm.dev/servicemarket/api/login.php",
+      url: this.BASE_URL + "login.php",
       data: {
         user: un,
         pass: pw,
@@ -21,7 +23,7 @@ class BackendAPI {
   static async requestMyOrders(auth_token) {
     const response = await axios({
       method: "post",
-      url: "https://philcomm.dev/servicemarket/api/my_orders.php",
+      url: this.BASE_URL + "my_orders.php",
       data: {},
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +38,7 @@ class BackendAPI {
   static async requestAllOrders(auth_token) {
     const response = await axios({
       method: "post",
-      url: "https://philcomm.dev/servicemarket/api/all_orders.php",
+      url: this.BASE_URL + "all_orders.php",
       data: {},
       headers: {
         "Content-Type": "application/json",
