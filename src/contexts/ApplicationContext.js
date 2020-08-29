@@ -26,6 +26,7 @@ class ApplicationContextProvider extends Component {
 
     this.request_all_orders();
     this.request_my_orders();
+    this.request_accepted_orders();
   };
 
   logout = async () => {
@@ -49,6 +50,13 @@ class ApplicationContextProvider extends Component {
 
     this.setState({ my_orders: result.orders });
   };
+  request_accepted_orders = async () => {
+    const result = await BackendAPI.requestAcceptedOrders(
+      this.state.auth_token
+    );
+
+    this.setState({ accepted_orders: result.orders });
+  };
 
   render() {
     return (
@@ -58,6 +66,7 @@ class ApplicationContextProvider extends Component {
           login: this.login,
           logout: this.logout,
           request_my_orders: this.request_my_orders,
+          request_accepted_orders: this.request_accepted_orders,
           request_all_orders: this.request_all_orders,
         }}
       >
