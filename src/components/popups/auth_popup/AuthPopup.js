@@ -39,18 +39,30 @@ export default class AuthPopup extends Component {
             )}
           </span>
           {this.state.loginOpen ? (
-            <React.Fragment>
-              <input
-                type="text"
-                name="username"
-                ref={(input) => (this.loginUsername = input)}
-              />
-              <input
-                type="text"
-                name="password"
-                ref={(input) => (this.loginPassword = input)}
-              />
-            </React.Fragment>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Username</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="username"
+                      ref={(input) => (this.loginUsername = input)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Password</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="password"
+                      ref={(input) => (this.loginPassword = input)}
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           ) : (
             <div>Register open</div>
           )}
