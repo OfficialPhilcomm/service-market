@@ -15,7 +15,6 @@ export default class MyOrders extends Component {
     this.setState({ createPopupOpen: true });
   };
   closeCreatePopup = () => {
-    console.log("try to close");
     this.setState({ createPopupOpen: false });
   };
 
