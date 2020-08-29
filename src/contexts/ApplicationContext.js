@@ -14,23 +14,9 @@ class ApplicationContextProvider extends Component {
   };
 
   login = async (u, p) => {
-    const response = await axios({
-      method: "post",
-      url: "https://philcomm.dev/servicemarket/api/login.php",
-      data: {
-        user: "Philcomm",
-        pass: "",
-      },
-      headers: {
-        "Content-Type": "application/json",
-        "Api-Token": "486ce77a-e1f9-11ea-af0d-001a4a150180",
-      },
-    });
-
-    const result = response.data;
+    const result = BackendAPI.login("Philcomm", "");
 
     if (result.success) {
-      console.log(response.data);
       this.setState({
         logged_in: true,
         auth_token: result.auth_token,
@@ -53,18 +39,7 @@ class ApplicationContextProvider extends Component {
   };
 
   request_all_orders = async () => {
-    const response = await axios({
-      method: "post",
-      url: "https://philcomm.dev/servicemarket/api/all_orders.php",
-      data: {},
-      headers: {
-        "Content-Type": "application/json",
-        "Api-Token": "486ce77a-e1f9-11ea-af0d-001a4a150180",
-        "Auth-Token": this.state.auth_token,
-      },
-    });
-
-    const result = response.data;
+    const result = await BackendAPI.requestAllOrders(this.state.auth_token);
 
     this.setState({ all_orders: result.orders });
   };
