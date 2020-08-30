@@ -18,6 +18,18 @@ export default class ListOffersPopup extends Component {
     this.setState({ offers: result.offers });
   }
 
+  acceptOffer = async (offerID) => {
+    await BackendAPI.acceptOffer(
+      this.context.auth_token,
+      this.props.orderID,
+      offerID
+    );
+    this.props.closeCallback();
+
+    this.context.request_my_orders();
+    this.context.request_all_orders();
+  };
+
   render() {
     return (
       <CloseablePopup closeCallback={this.props.closeCallback}>
@@ -28,6 +40,11 @@ export default class ListOffersPopup extends Component {
               <tr key={offer.id}>
                 <td>{offer.username}</td>
                 <td>{offer.price}</td>
+                <td>
+                  <button onClick={() => this.acceptOffer(offer.id)}>
+                    Accept
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
