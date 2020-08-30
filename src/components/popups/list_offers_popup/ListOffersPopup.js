@@ -16,7 +16,6 @@ export default class ListOffersPopup extends Component {
       this.props.orderID
     );
     this.setState({ offers: result.offers });
-    console.log(result.offers);
   }
 
   render() {

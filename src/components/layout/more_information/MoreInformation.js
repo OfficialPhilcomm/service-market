@@ -26,8 +26,6 @@ export default class MoreInformation extends Component {
       this.props.orderID
     );
 
-    console.log(result.order);
-
     this.setState({ order: result.order });
   };
 
@@ -112,10 +110,10 @@ export default class MoreInformation extends Component {
                   Update state
                 </button>
               ) : null}
-              {order.closeable && !order.is_my_order ? (
+              {order.closeable && order.is_my_order ? (
                 <button>Close order</button>
               ) : null}
-              {order.finishable && order.is_my_order ? (
+              {order.finishable && !order.is_my_order ? (
                 <button>Finish order</button>
               ) : null}
             </div>

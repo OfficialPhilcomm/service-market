@@ -22,8 +22,6 @@ export default class UpdateStatePopup extends Component {
   };
 
   render() {
-    console.log(this.props);
-
     return (
       <CloseablePopup closeCallback={this.props.closeCallback}>
         Update the state for {this.props.orderID}

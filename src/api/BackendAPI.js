@@ -100,8 +100,7 @@ export default class BackendAPI {
   }
 
   static async changeState(auth_token, order_id, state) {
-    console.log("change state");
-    const response = await axios({
+    axios({
       method: "post",
       url: this.BASE_URL + "orders/update_state.php",
       data: {
@@ -114,7 +113,5 @@ export default class BackendAPI {
         "Auth-Token": auth_token,
       },
     });
-
-    console.log(response.data);
   }
 }
