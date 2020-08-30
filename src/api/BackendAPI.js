@@ -129,4 +129,20 @@ export default class BackendAPI {
       },
     });
   }
+
+  static async makeOffer(auth_token, order_id, price) {
+    await axios({
+      method: "post",
+      url: this.BASE_URL + "offers/new_offer.php",
+      data: {
+        user_order_id: order_id,
+        price: price,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Api-Token": "486ce77a-e1f9-11ea-af0d-001a4a150180",
+        "Auth-Token": auth_token,
+      },
+    });
+  }
 }

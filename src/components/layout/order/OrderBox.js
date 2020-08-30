@@ -4,14 +4,22 @@ import { ReactComponent as PokeballImage } from "../../../img/pokeball.svg";
 import ListOffersPopup from "../../popups/list_offers_popup/ListOffersPopup";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import StringUtils from "../../../api/StringUtils";
+import MakeOfferPopup from "../../popups/make_offer_popup/MakeOfferPopup";
 
 export default class OrderBox extends Component {
   static contextType = ApplicationContext;
 
   state = {
+    makeOfferPopupOpen: false,
     listOffersPopupOpen: false,
   };
 
+  openMakeOfferPopup = () => {
+    this.setState({ makeOfferPopupOpen: true });
+  };
+  closeMakeOfferPopup = () => {
+    this.setState({ makeOfferPopupOpen: false });
+  };
   openListOffersPopup = () => {
     this.setState({ listOffersPopupOpen: true });
   };
@@ -63,18 +71,20 @@ export default class OrderBox extends Component {
   render() {
     const order = this.props.order;
 
-    console.log(order);
-
     return (
       <div className="order-box">
+        {this.state.makeOfferPopupOpen ? (
+          <MakeOfferPopup
+            orderID={order.id}
+            closeCallback={this.closeMakeOfferPopup}
+          />
+        ) : null}
         {this.state.listOffersPopupOpen ? (
           <ListOffersPopup
             orderID={order.id}
             closeCallback={this.closeListOffersPopup}
           />
-        ) : (
-          <React.Fragment />
-        )}
+        ) : null}
         <div className="details">
           <PokeballImage className="sprite" />
           <div className="basics">
@@ -95,7 +105,10 @@ export default class OrderBox extends Component {
           </div>
         </div>
         <div className="buttons">
-          {order.my_order && order.state === null && order.offer_count ? (
+          {order.offer_possible ? (
+            <button onClick={this.openMakeOfferPopup}>Make offer</button>
+          ) : null}
+          {order.is_my_order && order.state === null && order.offer_count ? (
             <button onClick={this.openListOffersPopup}>List offers</button>
           ) : (
             <React.Fragment />
