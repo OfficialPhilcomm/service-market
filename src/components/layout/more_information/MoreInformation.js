@@ -3,6 +3,7 @@ import BackendAPI from "../../../api/BackendAPI";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import StringUtils from "../../../api/StringUtils";
 import UpdateStatePopup from "../../popups/update_state_popup/UpdateStatePopup";
+import ProgressBar from "../../progressbar/ProgressBar";
 
 export default class MoreInformation extends Component {
   static contextType = ApplicationContext;
@@ -66,9 +67,12 @@ export default class MoreInformation extends Component {
               />
             ) : null}
             {order.state !== null ? (
-              <div>
-                {StringUtils.humanize(StringUtils.stateToString(order.state))}
-              </div>
+              <React.Fragment>
+                <div>
+                  {StringUtils.humanize(StringUtils.stateToString(order.state))}
+                </div>
+                <ProgressBar finishedSteps={order.state} />
+              </React.Fragment>
             ) : null}
             {order.is_my_order ? (
               <React.Fragment>

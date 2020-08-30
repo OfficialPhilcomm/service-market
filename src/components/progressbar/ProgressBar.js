@@ -8,7 +8,18 @@ export default class ProgressBar extends Component {
       <div className="progressbar">
         <div className="progressbar-track" />
         {StringUtils.states.map((state, index) => (
-          <div className="progressbar-step">{state}</div>
+          <div
+            className={
+              index < this.props.finishedSteps
+                ? "progressbar-step is-complete"
+                : index === this.props.finishedSteps
+                ? "progressbar-step is-active"
+                : "progressbar-step"
+            }
+            key={index}
+          >
+            {state}
+          </div>
         ))}
       </div>
     );
