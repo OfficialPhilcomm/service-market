@@ -165,7 +165,7 @@ export default class BackendAPI {
   static async finishOrder(auth_token, order_id) {
     await axios({
       method: "post",
-      url: this.BASE_URL + "offers/finish_order.php",
+      url: this.BASE_URL + "orders/finish_order.php",
       data: {
         user_order_id: order_id,
       },
@@ -180,7 +180,7 @@ export default class BackendAPI {
   static async closeOrder(auth_token, order_id) {
     await axios({
       method: "post",
-      url: this.BASE_URL + "offers/close_order.php",
+      url: this.BASE_URL + "orders/close_order.php",
       data: {
         user_order_id: order_id,
       },
