@@ -39,4 +39,17 @@ export default class PokeAPI {
       return this.pokemonList[index];
     }
   }
+
+  static async getSpriteURL(pokemonName) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${this.POKE_API_BASE_URL}pokemon/${pokemonName}`,
+      });
+
+      return response.data.sprites.front_default;
+    } catch (error) {
+      return null;
+    }
+  }
 }

@@ -5,6 +5,7 @@ import ListOffersPopup from "../../popups/list_offers_popup/ListOffersPopup";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import StringUtils from "../../../api/StringUtils";
 import MakeOfferPopup from "../../popups/make_offer_popup/MakeOfferPopup";
+import PokeAPI from "../../../api/PokeAPI";
 
 export default class OrderBox extends Component {
   static contextType = ApplicationContext;
@@ -12,6 +13,7 @@ export default class OrderBox extends Component {
   state = {
     makeOfferPopupOpen: false,
     listOffersPopupOpen: false,
+    imageUrl: null,
   };
 
   openMakeOfferPopup = () => {
@@ -68,8 +70,15 @@ export default class OrderBox extends Component {
     return thirtyCount;
   };
 
+  async componentDidMount() {
+    const sprite = await PokeAPI.getSpriteURL(this.props.order.pokemon_name);
+    this.setState({ imageUrl: sprite });
+  }
+
   render() {
     const order = this.props.order;
+
+    const image = this.state.imageUrl;
 
     return (
       <div className="order-box">
@@ -86,7 +95,11 @@ export default class OrderBox extends Component {
           />
         ) : null}
         <div className="details">
-          <PokeballImage className="sprite" />
+          {image ? (
+            <img className="sprite" src={image} />
+          ) : (
+            <PokeballImage className="sprite" />
+          )}
           <div className="basics">
             <span>
               {StringUtils.humanize(order.pokemon_name)} lvl {order.level}
