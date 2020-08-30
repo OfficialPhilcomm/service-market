@@ -12,22 +12,26 @@ export default class AllOrders extends Component {
 
     return (
       <div className="all-requests">
-        <button onClick={request_all_orders}>Refresh</button>
-        {logged_in ? (
-          <React.Fragment>
-            {all_orders && all_orders.length > 0 ? (
-              <React.Fragment>
-                {all_orders.map((order) => (
-                  <OrderBox key={order.id} order={order} />
-                ))}
-              </React.Fragment>
-            ) : (
-              <div>No orders found</div>
-            )}
-          </React.Fragment>
-        ) : (
-          <span>Log in to see orders</span>
-        )}
+        <div className="title">
+          <button onClick={request_all_orders}>Refresh</button>
+        </div>
+        <div className="all-orders-container">
+          {logged_in ? (
+            <React.Fragment>
+              {all_orders && all_orders.length > 0 ? (
+                <React.Fragment>
+                  {all_orders.map((order) => (
+                    <OrderBox key={order.id} order={order} />
+                  ))}
+                </React.Fragment>
+              ) : (
+                <div>No orders found</div>
+              )}
+            </React.Fragment>
+          ) : (
+            <span>Log in to see orders</span>
+          )}
+        </div>
       </div>
     );
   }

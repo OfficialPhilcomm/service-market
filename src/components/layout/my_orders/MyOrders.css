@@ -12,6 +12,8 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+
+  border-bottom: 1px solid #707070;
 }
 
 .own-requests .title .add {
@@ -22,7 +24,7 @@
 }
 
 .own-requests .my-orders-container {
-  padding: 5px 15px;
+  padding: 0 14px;
   width: 100%;
   flex-grow: 1;
   overflow-y: auto;
