@@ -31,6 +31,14 @@ export default class MoreInformation extends Component {
 
   finishOrder = async () => {
     await BackendAPI.finishOrder(this.props.orderID);
+
+    this.refreshInformation();
+  };
+
+  closeOrder = async () => {
+    await BackendAPI.finishOrder(this.props.orderID);
+
+    this.refreshInformation();
   };
 
   async componentDidUpdate(prevProps) {
@@ -114,9 +122,11 @@ export default class MoreInformation extends Component {
                   Update state
                 </button>
               ) : null}
-              {order.closeable ? <button>Close order</button> : null}
               {order.finishable ? (
                 <button onClick={this.finishOrder}>Finish order</button>
+              ) : null}
+              {order.closeable ? (
+                <button onClick={this.closeOrder}>Close order</button>
               ) : null}
             </div>
           </React.Fragment>
