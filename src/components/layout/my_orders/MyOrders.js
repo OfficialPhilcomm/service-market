@@ -17,6 +17,8 @@ export default class MyOrders extends Component {
   };
   closeCreatePopup = () => {
     this.setState({ createPopupOpen: false });
+    this.context.request_my_orders();
+    this.context.request_all_orders();
   };
 
   render() {

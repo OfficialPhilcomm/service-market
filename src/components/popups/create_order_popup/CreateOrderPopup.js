@@ -55,7 +55,7 @@ export default class CreateOrderPopup extends Component {
   };
 
   createOrder = async () => {
-    BackendAPI.createOrder(this.context.auth_token, {
+    const args = {
       pokemon_name: this.selectPokemon.value,
       gender: "Male",
       level: parseInt(this.selectLevel.value),
@@ -70,16 +70,18 @@ export default class CreateOrderPopup extends Component {
       iv_atk: parseInt(this.inputIVAtk.value),
       iv_def: parseInt(this.inputIVDef.value),
       iv_spatk: parseInt(this.inputIVSpAtk.value),
-      iv_spdef: parseInt(this.inputIVDef.value),
+      iv_spdef: parseInt(this.inputIVSpDef.value),
       iv_spe: parseInt(this.inputIVSpeed.value),
 
       ev_hp: parseInt(this.inputEVHP.value),
       ev_atk: parseInt(this.inputEVAtk.value),
       ev_def: parseInt(this.inputEVDef.value),
       ev_spatk: parseInt(this.inputEVSpAtk.value),
-      ev_spdef: parseInt(this.inputEVDef.value),
+      ev_spdef: parseInt(this.inputEVSpDef.value),
       ev_spe: parseInt(this.inputEVSpeed.value),
-    });
+    };
+
+    BackendAPI.createOrder(this.context.auth_token, args);
 
     this.props.closeCallback();
   };
