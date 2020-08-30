@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./OrderBox.css";
-import { ReactComponent as PokeballImage } from "../../../img/pokeball.svg";
+import PokeballImage from "../../../img/pokeball.svg";
 import ListOffersPopup from "../../popups/list_offers_popup/ListOffersPopup";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import StringUtils from "../../../api/StringUtils";
@@ -95,11 +95,7 @@ export default class OrderBox extends Component {
           />
         ) : null}
         <div className="details">
-          {image ? (
-            <img className="sprite" src={image} />
-          ) : (
-            <PokeballImage className="sprite" />
-          )}
+          <img className="sprite" src={image ? image : PokeballImage} />
           <div className="basics">
             <span>
               {StringUtils.humanize(order.pokemon_name)} lvl {order.level}
