@@ -100,7 +100,7 @@ export default class BackendAPI {
   }
 
   static async createOrder(auth_token, order_data) {
-    const response = await axios({
+    await axios({
       method: "post",
       url: this.BASE_URL + "orders/new_order.php",
       data: {

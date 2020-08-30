@@ -81,7 +81,7 @@ export default class CreateOrderPopup extends Component {
       ev_spe: parseInt(this.inputEVSpeed.value),
     };
 
-    BackendAPI.createOrder(this.context.auth_token, args);
+    await BackendAPI.createOrder(this.context.auth_token, args);
 
     this.props.closeCallback();
   };
