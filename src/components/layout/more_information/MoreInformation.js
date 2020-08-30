@@ -38,7 +38,7 @@ export default class MoreInformation extends Component {
   };
 
   closeOrder = async () => {
-    await BackendAPI.finishOrder(this.context.auth_token, this.props.orderID);
+    await BackendAPI.closeOrder(this.context.auth_token, this.props.orderID);
 
     this.context.request_my_orders();
 
