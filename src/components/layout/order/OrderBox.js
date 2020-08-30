@@ -63,6 +63,8 @@ export default class OrderBox extends Component {
   render() {
     const order = this.props.order;
 
+    console.log(order);
+
     return (
       <div className="order-box">
         {this.state.listOffersPopupOpen ? (
