@@ -20,6 +20,44 @@ export default class OrderBox extends Component {
   showAdvancedInformation = () => {
     this.context.show_advanced_information(this.props.order.id);
   };
+  thirtyOneCount = () => {
+    const order = this.props.order;
+
+    let ivs = [
+      order.iv_hp,
+      order.iv_atk,
+      order.iv_def,
+      order.iv_spatk,
+      order.iv_spdef,
+      order.iv_spe,
+    ];
+
+    let thirtyOneCount = 0;
+    for (let iv of ivs) {
+      if (iv === 31) thirtyOneCount++;
+    }
+
+    return thirtyOneCount;
+  };
+  thirtyCount = () => {
+    const order = this.props.order;
+
+    let ivs = [
+      order.iv_hp,
+      order.iv_atk,
+      order.iv_def,
+      order.iv_spatk,
+      order.iv_spdef,
+      order.iv_spe,
+    ];
+
+    let thirtyCount = 0;
+    for (let iv of ivs) {
+      if (iv === 30) thirtyCount++;
+    }
+
+    return thirtyCount;
+  };
 
   render() {
     const order = this.props.order;
@@ -38,9 +76,22 @@ export default class OrderBox extends Component {
         )}
         <div className="details">
           <PokeballImage className="sprite" />
-          <div>{order.username}</div>
-          <div>{order.pokemon_name}</div>
-          <div>{order.level}</div>
+          <div className="basics">
+            <span>
+              {order.pokemon_name} lvl {order.level}
+            </span>
+            <span>Item: {order.item}</span>
+            <span>Ability: {order.ability}</span>
+            <span>
+              {this.thirtyOneCount()}x31 {this.thirtyCount()}x30
+            </span>
+          </div>
+          <div className="moves">
+            <span>{order.move1}</span>
+            <span>{order.move2}</span>
+            <span>{order.move3}</span>
+            <span>{order.move4}</span>
+          </div>
         </div>
         <div className="buttons">
           {order.my_order && order.state === null && order.offer_count ? (

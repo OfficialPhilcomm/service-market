@@ -26,6 +26,18 @@
   width: 96px;
   height: 96px;
 }
+.order-box .details .basics {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.order-box .details .moves {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 
 .order-box .buttons {
   width: 100%;
