@@ -6,7 +6,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <nav>
-        <button className="navlink">Test</button>
+        <div className="title">PokeMMO Breeding Market</div>
       </nav>
     );
   }
