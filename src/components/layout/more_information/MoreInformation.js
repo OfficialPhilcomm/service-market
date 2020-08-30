@@ -121,7 +121,7 @@ export default class MoreInformation extends Component {
               </tbody>
             </table>
             <div className="buttons">
-              {order.state_changeable ? (
+              {order.state_changeable && !order.finished ? (
                 <button onClick={this.openUpdateStatePopup}>
                   Update state
                 </button>
