@@ -79,6 +79,17 @@ export default class MoreInformation extends Component {
                 </tr>
               </tbody>
             </table>
+            <div className="buttons">
+              {order.state !== null && !order.is_my_order ? (
+                <button>Update state</button>
+              ) : null}
+              {order.closeable && !order.is_my_order ? (
+                <button>Close order</button>
+              ) : null}
+              {order.finishable && order.is_my_order ? (
+                <button>Finish order</button>
+              ) : null}
+            </div>
           </React.Fragment>
         ) : (
           <div>
