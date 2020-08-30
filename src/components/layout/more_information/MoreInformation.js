@@ -71,7 +71,7 @@ export default class MoreInformation extends Component {
                 <div>
                   {StringUtils.humanize(StringUtils.stateToString(order.state))}
                 </div>
-                <ProgressBar finishedSteps={order.state} />
+                <ProgressBar finishedSteps={order.finished ? 5 : order.state} />
               </React.Fragment>
             ) : null}
             {order.is_my_order ? (
