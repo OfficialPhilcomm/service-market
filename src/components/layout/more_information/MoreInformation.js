@@ -32,11 +32,15 @@ export default class MoreInformation extends Component {
   finishOrder = async () => {
     await BackendAPI.finishOrder(this.props.orderID);
 
+    this.context.request_my_orders();
+
     this.refreshInformation();
   };
 
   closeOrder = async () => {
     await BackendAPI.finishOrder(this.props.orderID);
+
+    this.context.request_my_orders();
 
     this.refreshInformation();
   };
