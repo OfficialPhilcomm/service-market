@@ -98,12 +98,23 @@ export default class BackendAPI {
 
     return response.data;
   }
-}
 
-export class OrderStates {
-  static states = ["accepted", "starting", "breeding", "leveling", "finishing"];
+  static async changeState(auth_token, order_id, state) {
+    console.log("change state");
+    const response = await axios({
+      method: "post",
+      url: this.BASE_URL + "orders/update_state.php",
+      data: {
+        user_order_id: order_id,
+        state: state,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Api-Token": "486ce77a-e1f9-11ea-af0d-001a4a150180",
+        "Auth-Token": auth_token,
+      },
+    });
 
-  static stateToString(state) {
-    return this.states[state];
+    console.log(response.data);
   }
 }

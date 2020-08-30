@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import BackendAPI from "../../../api/BackendAPI";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
+import StringUtils from "../../../api/StringUtils";
+import UpdateStatePopup from "../../popups/update_state_popup/UpdateStatePopup";
 
 export default class MoreInformation extends Component {
   static contextType = ApplicationContext;
 
   state = {
     order: null,
+    updateStatePopupOpen: false,
+  };
+
+  openUpdateStatePopup = () => {
+    this.setState({ updateStatePopupOpen: true });
+  };
+  closeUpdateStatePopup = () => {
+    this.setState({ updateStatePopupOpen: false });
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -29,6 +39,18 @@ export default class MoreInformation extends Component {
       <div className="more-information">
         {order ? (
           <React.Fragment>
+            {this.state.updateStatePopupOpen ? (
+              <UpdateStatePopup
+                orderID={order.user_order_id}
+                state={order.state}
+                closeCallback={this.closeUpdateStatePopup}
+              />
+            ) : null}
+            {order.state !== null ? (
+              <div>
+                {StringUtils.humanize(StringUtils.stateToString(order.state))}
+              </div>
+            ) : null}
             {order.is_my_order ? (
               <React.Fragment>
                 {order.state != null ? (
@@ -81,7 +103,9 @@ export default class MoreInformation extends Component {
             </table>
             <div className="buttons">
               {order.state !== null && !order.is_my_order ? (
-                <button>Update state</button>
+                <button onClick={this.openUpdateStatePopup}>
+                  Update state
+                </button>
               ) : null}
               {order.closeable && !order.is_my_order ? (
                 <button>Close order</button>
