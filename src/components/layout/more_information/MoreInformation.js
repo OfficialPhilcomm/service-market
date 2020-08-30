@@ -105,17 +105,13 @@ export default class MoreInformation extends Component {
               </tbody>
             </table>
             <div className="buttons">
-              {order.state !== null && !order.is_my_order ? (
+              {order.state_changeable ? (
                 <button onClick={this.openUpdateStatePopup}>
                   Update state
                 </button>
               ) : null}
-              {order.closeable && order.is_my_order ? (
-                <button>Close order</button>
-              ) : null}
-              {order.finishable && !order.is_my_order ? (
-                <button>Finish order</button>
-              ) : null}
+              {order.closeable ? <button>Close order</button> : null}
+              {order.finishable ? <button>Finish order</button> : null}
             </div>
           </React.Fragment>
         ) : (
