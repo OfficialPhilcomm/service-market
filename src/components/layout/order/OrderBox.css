@@ -26,6 +26,7 @@
 .order-box .details .sprite {
   width: 96px;
   height: 96px;
+  margin: 6px;
 }
 .order-box .details .basics {
   display: flex;
@@ -38,6 +39,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-left: 10px;
 }
 
 .order-box .buttons {
