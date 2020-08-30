@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import "./OrderBox.css";
 import { ReactComponent as PokeballImage } from "../../../img/pokeball.svg";
 import ListOffersPopup from "../../popups/list_offers_popup/ListOffersPopup";
+import { ApplicationContext } from "../../../contexts/ApplicationContext";
 
 export default class OrderBox extends Component {
+  static contextType = ApplicationContext;
+
   state = {
     listOffersPopupOpen: false,
   };
@@ -13,6 +16,9 @@ export default class OrderBox extends Component {
   };
   closeListOffersPopup = () => {
     this.setState({ listOffersPopupOpen: false });
+  };
+  showAdvancedInformation = () => {
+    this.context.show_advanced_information(this.props.order.id);
   };
 
   render() {
@@ -42,6 +48,9 @@ export default class OrderBox extends Component {
           ) : (
             <React.Fragment />
           )}
+          <button onClick={this.showAdvancedInformation}>
+            Show information
+          </button>
         </div>
       </div>
     );

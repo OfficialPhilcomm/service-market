@@ -7,6 +7,7 @@ import MyOrders from "../my_orders/MyOrders";
 import "./Main.css";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import AuthPopup from "../../popups/auth_popup/AuthPopup";
+import MoreInformation from "../more_information/MoreInformation";
 
 export default class Main extends Component {
   static contextType = ApplicationContext;
@@ -24,7 +25,7 @@ export default class Main extends Component {
           <React.Fragment></React.Fragment>
         )}
         <AllOrders />
-        <div className="more-information">more-information</div>
+        <MoreInformation orderID={this.context.more_information_order_id} />
         <UserInfo />
         <MyOrders />
       </main>

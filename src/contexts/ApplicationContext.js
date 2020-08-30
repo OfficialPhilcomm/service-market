@@ -11,6 +11,7 @@ class ApplicationContextProvider extends Component {
     my_oders: [],
     accepted_orders: [],
     all_orders: [],
+    more_information_order_id: null,
   };
 
   login = async (u, p) => {
@@ -58,6 +59,10 @@ class ApplicationContextProvider extends Component {
     this.setState({ accepted_orders: result.orders });
   };
 
+  show_advanced_information = (order_id) => {
+    this.setState({ more_information_order_id: order_id });
+  };
+
   render() {
     return (
       <ApplicationContext.Provider
@@ -68,6 +73,7 @@ class ApplicationContextProvider extends Component {
           request_my_orders: this.request_my_orders,
           request_accepted_orders: this.request_accepted_orders,
           request_all_orders: this.request_all_orders,
+          show_advanced_information: this.show_advanced_information,
         }}
       >
         {this.props.children}
