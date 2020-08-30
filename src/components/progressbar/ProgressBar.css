@@ -72,6 +72,12 @@
 .progressbar .progressbar-step.is-complete:after {
   z-index: -1;
   background: var(--progress-bar-blue);
+  animation: nextStep 0s;
+  animation-fill-mode: forwards;
+}
+.progressbar .progressbar-step.is-complete.animated:after {
+  z-index: -1;
+  background: var(--progress-bar-blue);
   animation: nextStep 1s;
   animation-fill-mode: forwards;
 }
