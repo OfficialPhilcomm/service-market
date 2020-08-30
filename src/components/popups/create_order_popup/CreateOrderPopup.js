@@ -4,6 +4,7 @@ import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import PokeAPI from "../../../api/PokeAPI";
 import StringUtils from "../../../api/StringUtils";
 import "./CreateOrderPopup.css";
+import BackendAPI from "../../../api/BackendAPI";
 
 export default class CreateOrderPopup extends Component {
   static contextType = ApplicationContext;
@@ -27,17 +28,26 @@ export default class CreateOrderPopup extends Component {
     this.setState({ p: pokemon });
   };
 
+  createOrder = async () => {
+    console.log(this.selectPokemon.value);
+    BackendAPI.createOrder(this.context.auth_token, {
+      pokemon_name: this.selectPokemon.value,
+    });
+  };
+
   render() {
     const p = this.state.p;
-    console.log(p);
 
     return (
       <CloseablePopup closeCallback={this.props.closeCallback}>
         <div className="content">
           <div className="create-row">
-            <select onChange={this.switchPokemon}>
+            <select
+              onChange={this.switchPokemon}
+              ref={(select) => (this.selectPokemon = select)}
+            >
               {PokeAPI.pokemonList.map((pokemon, index) => (
-                <option value={index} key={index}>
+                <option value={pokemon.name} key={index}>
                   {StringUtils.humanize(pokemon.name)}
                 </option>
               ))}
@@ -175,7 +185,9 @@ export default class CreateOrderPopup extends Component {
             </React.Fragment>
           ) : null}
         </div>
-        <div className="buttons"></div>
+        <div className="buttons">
+          <button onClick={this.createOrder}>Create</button>
+        </div>
       </CloseablePopup>
     );
   }

@@ -99,6 +99,23 @@ export default class BackendAPI {
     return response.data;
   }
 
+  static async createOrder(auth_token, order_data) {
+    const response = await axios({
+      method: "post",
+      url: this.BASE_URL + "orders/new_order.php",
+      data: {
+        ...order_data,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Api-Token": "486ce77a-e1f9-11ea-af0d-001a4a150180",
+        "Auth-Token": auth_token,
+      },
+    });
+
+    console.log(response.data);
+  }
+
   static async changeState(auth_token, order_id, state) {
     axios({
       method: "post",
