@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class BackendAPI {
+export default class BackendAPI {
   static BASE_URL = "https://philcomm.dev/servicemarket/api/";
 
   static async login(un, pw) {
@@ -100,4 +100,10 @@ class BackendAPI {
   }
 }
 
-export default BackendAPI;
+export class OrderStates {
+  static states = ["accepted", "starting", "breeding", "leveling", "finishing"];
+
+  static stateToString(state) {
+    return this.states[state];
+  }
+}
