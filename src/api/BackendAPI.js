@@ -112,8 +112,6 @@ export default class BackendAPI {
         "Auth-Token": auth_token,
       },
     });
-
-    console.log(response.data);
   }
 
   static async changeState(auth_token, order_id, state) {
