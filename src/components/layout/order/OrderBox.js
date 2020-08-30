@@ -3,6 +3,7 @@ import "./OrderBox.css";
 import { ReactComponent as PokeballImage } from "../../../img/pokeball.svg";
 import ListOffersPopup from "../../popups/list_offers_popup/ListOffersPopup";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
+import StringUtils from "../../../api/StringUtils";
 
 export default class OrderBox extends Component {
   static contextType = ApplicationContext;
@@ -76,19 +77,19 @@ export default class OrderBox extends Component {
           <PokeballImage className="sprite" />
           <div className="basics">
             <span>
-              {order.pokemon_name} lvl {order.level}
+              {StringUtils.humanize(order.pokemon_name)} lvl {order.level}
             </span>
-            <span>Item: {order.item}</span>
-            <span>Ability: {order.ability}</span>
+            <span>Item: {StringUtils.humanize(order.item)}</span>
+            <span>Ability: {StringUtils.humanize(order.ability)}</span>
             <span>
               {this.thirtyOneCount()}x31 {this.thirtyCount()}x30
             </span>
           </div>
           <div className="moves">
-            <span>{order.move1}</span>
-            <span>{order.move2}</span>
-            <span>{order.move3}</span>
-            <span>{order.move4}</span>
+            <span>{StringUtils.humanize(order.move1)}</span>
+            <span>{StringUtils.humanize(order.move2)}</span>
+            <span>{StringUtils.humanize(order.move3)}</span>
+            <span>{StringUtils.humanize(order.move4)}</span>
           </div>
         </div>
         <div className="buttons">
