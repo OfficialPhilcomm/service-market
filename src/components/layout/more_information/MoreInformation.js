@@ -17,18 +17,23 @@ export default class MoreInformation extends Component {
   };
   closeUpdateStatePopup = () => {
     this.setState({ updateStatePopupOpen: false });
+    this.refreshInformation();
   };
 
-  async componentDidUpdate(prevProps, prevState) {
+  refreshInformation = async () => {
+    const result = await BackendAPI.requestOrderInfo(
+      this.context.auth_token,
+      this.props.orderID
+    );
+
+    console.log(result.order);
+
+    this.setState({ order: result.order });
+  };
+
+  async componentDidUpdate(prevProps) {
     if (prevProps.orderID !== this.props.orderID) {
-      const result = await BackendAPI.requestOrderInfo(
-        this.context.auth_token,
-        this.props.orderID
-      );
-
-      console.log(result.order);
-
-      this.setState({ order: result.order });
+      this.refreshInformation();
     }
   }
 
