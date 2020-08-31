@@ -16,6 +16,13 @@
   border-bottom: 1px solid #707070;
 }
 
+.all-requests .refresh {
+  margin-left: auto;
+  height: 16px;
+
+  cursor: pointer;
+}
+
 .all-requests .all-orders-container {
   padding: 0 14px;
   width: 100%;

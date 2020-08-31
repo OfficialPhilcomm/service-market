@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./AllOrders.css";
 import OrderBox from "../order/OrderBox";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
+import { ReactComponent as RefreshIcon } from "../../../img/sync-alt-solid.svg";
 
 export default class AllOrders extends Component {
   static contextType = ApplicationContext;
@@ -13,7 +14,8 @@ export default class AllOrders extends Component {
     return (
       <div className="all-requests">
         <div className="title">
-          <button onClick={request_all_orders}>Refresh</button>
+          All Orders
+          <RefreshIcon className="refresh" onClick={request_all_orders} />
         </div>
         <div className="all-orders-container">
           {logged_in ? (
