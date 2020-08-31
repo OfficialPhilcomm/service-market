@@ -12,6 +12,9 @@
     "react-scripts": "3.4.3",
     "styled-components": "^5.1.1"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
