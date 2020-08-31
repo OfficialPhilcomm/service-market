@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import CloseablePopup from "../CloseablePopup";
 import BackendAPI from "../../../api/BackendAPI";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
-import StringUtils from "../../../api/StringUtils";
 
 export default class MakeOfferPopup extends Component {
   static contextType = ApplicationContext;

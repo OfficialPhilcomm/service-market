@@ -95,7 +95,11 @@ export default class OrderBox extends Component {
           />
         ) : null}
         <div className="details">
-          <img className="sprite" src={image ? image : PokeballImage} />
+          <img
+            className="sprite"
+            src={image ? image : PokeballImage}
+            alt="pokemon sprite"
+          />
           <div className="basics">
             <span>
               {StringUtils.humanize(order.pokemon_name)} lvl {order.level}

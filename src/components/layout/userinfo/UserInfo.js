@@ -22,7 +22,7 @@ export default class UserInfo extends Component {
         </div>
         <Logout />
         {logged_in ? (
-          <div class="counters">
+          <div className="counters">
             <IconCounter icon={PackageIcon} counter={2} />
             <IconCounter icon={EggIcon} counter={2} />
             <IconCounter icon={BellIcon} counter={2} />
