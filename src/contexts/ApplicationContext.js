@@ -68,6 +68,8 @@ class ApplicationContextProvider extends Component {
       all_orders: [],
       more_information_order_id: null,
     });
+
+    Cookies.remove("auth_token");
   };
 
   request_all_orders = async () => {
