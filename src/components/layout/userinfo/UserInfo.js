@@ -25,7 +25,7 @@ export default class UserInfo extends Component {
           <div className="counters">
             <IconCounter icon={PackageIcon} counter={2} />
             <IconCounter icon={EggIcon} counter={2} />
-            <IconCounter icon={BellIcon} counter={2} />
+            {/* <IconCounter icon={BellIcon} counter={2} /> */}
           </div>
         ) : null}
       </div>
