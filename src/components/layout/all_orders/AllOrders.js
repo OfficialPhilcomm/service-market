@@ -7,6 +7,14 @@ import { ReactComponent as RefreshIcon } from "../../../img/sync-alt-solid.svg";
 export default class AllOrders extends Component {
   static contextType = ApplicationContext;
 
+  componentDidMount() {
+    const interval = setInterval(() => {
+      if (this.context.logged_in) {
+        this.context.request_all_orders();
+      }
+    }, 300000);
+  }
+
   render() {
     const { logged_in, all_orders } = this.context;
     const { request_all_orders } = this.context;

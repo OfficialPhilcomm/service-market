@@ -16,6 +16,14 @@ export default class MoreInformation extends Component {
     exportDataPopupOpen: false,
   };
 
+  componentDidMount() {
+    const interval = setInterval(() => {
+      if (this.context.logged_in) {
+        this.refreshInformation();
+      }
+    }, 300000);
+  }
+
   openUpdateStatePopup = () => {
     this.setState({ updateStatePopupOpen: true });
   };

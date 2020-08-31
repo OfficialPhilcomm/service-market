@@ -12,6 +12,15 @@ export default class MyOrders extends Component {
     createPopupOpen: false,
   };
 
+  componentDidMount() {
+    const interval = setInterval(() => {
+      if (this.context.logged_in) {
+        this.context.request_my_orders();
+        this.context.request_accepted_orders();
+      }
+    }, 300000);
+  }
+
   openCreatePopup = () => {
     this.setState({ createPopupOpen: true });
   };
