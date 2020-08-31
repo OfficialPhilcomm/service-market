@@ -16,6 +16,12 @@ nav {
 
 nav .title {
   color: white;
-  font-size: 32px;
+  font-size: 22px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  nav .title {
+    font-size: 32px;
+  }
 }
