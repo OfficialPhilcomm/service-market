@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
-import LoginLogout from "../LoginLogout";
+import Logout from "../Logout";
 import "./UserInfo.css";
 import IconCounter from "../../icon_counter/IconCounter";
 import PackageIcon from "../../../img/box-solid.svg";
@@ -16,7 +16,7 @@ export default class UserInfo extends Component {
     return (
       <div className="user-info">
         <span>{logged_in ? username : "Not logged in"}</span>
-        <LoginLogout />
+        <Logout />
         <div class="counters">
           <IconCounter icon={PackageIcon} counter={2} />
         </div>
