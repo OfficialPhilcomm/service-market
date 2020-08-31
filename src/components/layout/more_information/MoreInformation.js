@@ -141,9 +141,11 @@ export default class MoreInformation extends Component {
               </tbody>
             </table>
             <div className="buttons">
-              <button className="rounded" onClick={this.openExportDataPopup}>
-                Export data
-              </button>
+              {!order.is_my_order && order.state !== null ? (
+                <button className="rounded" onClick={this.openExportDataPopup}>
+                  Export data
+                </button>
+              ) : null}
               {order.state_changeable && !order.finished ? (
                 <button className="rounded" onClick={this.openUpdateStatePopup}>
                   Update state
