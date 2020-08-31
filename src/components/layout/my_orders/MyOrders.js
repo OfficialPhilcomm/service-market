@@ -13,7 +13,7 @@ export default class MyOrders extends Component {
   };
 
   componentDidMount() {
-    const interval = setInterval(() => {
+    setInterval(() => {
       if (this.context.logged_in) {
         this.context.request_my_orders();
         this.context.request_accepted_orders();

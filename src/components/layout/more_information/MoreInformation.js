@@ -17,7 +17,7 @@ export default class MoreInformation extends Component {
   };
 
   componentDidMount() {
-    const interval = setInterval(() => {
+    setInterval(() => {
       if (this.context.logged_in) {
         this.refreshInformation();
       }

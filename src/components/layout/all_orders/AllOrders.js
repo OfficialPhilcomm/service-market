@@ -8,7 +8,7 @@ export default class AllOrders extends Component {
   static contextType = ApplicationContext;
 
   componentDidMount() {
-    const interval = setInterval(() => {
+    setInterval(() => {
       if (this.context.logged_in) {
         this.context.request_all_orders();
       }
