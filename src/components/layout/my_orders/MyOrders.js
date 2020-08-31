@@ -44,9 +44,7 @@ export default class MyOrders extends Component {
                     <OrderBox key={order.id} order={order} />
                   ))}
                 </React.Fragment>
-              ) : (
-                <div>No orders found</div>
-              )}
+              ) : null}
               {accepted_orders.length > 0 ? (
                 <React.Fragment>
                   <div className="title">Accepted orders</div>
