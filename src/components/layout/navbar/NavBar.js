@@ -6,7 +6,10 @@ export default class NavBar extends Component {
   render() {
     return (
       <nav>
-        <div className="title">PokeMMO Breeding Market</div>
+        <div className="title">
+          PokeMMO Breeding Market{" "}
+          <span>(alpha {process.env.REACT_APP_VERSION})</span>
+        </div>
       </nav>
     );
   }
