@@ -5,6 +5,7 @@ import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import StringUtils from "../../../api/StringUtils";
 import UpdateStatePopup from "../../popups/update_state_popup/UpdateStatePopup";
 import ProgressBar from "../../progressbar/ProgressBar";
+import ExportDataPopup from "../../popups/export_data/ExportDataPopup";
 
 export default class MoreInformation extends Component {
   static contextType = ApplicationContext;
@@ -12,6 +13,7 @@ export default class MoreInformation extends Component {
   state = {
     order: null,
     updateStatePopupOpen: false,
+    exportDataPopupOpen: false,
   };
 
   openUpdateStatePopup = () => {
@@ -20,6 +22,13 @@ export default class MoreInformation extends Component {
   closeUpdateStatePopup = () => {
     this.setState({ updateStatePopupOpen: false });
     this.refreshInformation();
+  };
+
+  openExportDataPopup = () => {
+    this.setState({ exportDataPopupOpen: true });
+  };
+  closeExportDataPopup = () => {
+    this.setState({ exportDataPopupOpen: false });
   };
 
   refreshInformation = async () => {
@@ -65,6 +74,12 @@ export default class MoreInformation extends Component {
                 orderID={order.user_order_id}
                 state={order.state}
                 closeCallback={this.closeUpdateStatePopup}
+              />
+            ) : null}
+            {this.state.exportDataPopupOpen ? (
+              <ExportDataPopup
+                order={order}
+                closeCallback={this.closeExportDataPopup}
               />
             ) : null}
             {order.state !== null ? (
@@ -126,6 +141,9 @@ export default class MoreInformation extends Component {
               </tbody>
             </table>
             <div className="buttons">
+              <button className="rounded" onClick={this.openExportDataPopup}>
+                Export data
+              </button>
               {order.state_changeable && !order.finished ? (
                 <button className="rounded" onClick={this.openUpdateStatePopup}>
                   Update state
