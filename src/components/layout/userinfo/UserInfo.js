@@ -4,6 +4,8 @@ import Logout from "../Logout";
 import "./UserInfo.css";
 import IconCounter from "../../icon_counter/IconCounter";
 import PackageIcon from "../../../img/box-solid.svg";
+import EggIcon from "../../../img/egg-solid.svg";
+import BellIcon from "../../../img/bell-solid.svg";
 
 export default class UserInfo extends Component {
   static contextType = ApplicationContext;
@@ -15,11 +17,17 @@ export default class UserInfo extends Component {
 
     return (
       <div className="user-info">
-        <span>{logged_in ? username : "Not logged in"}</span>
-        <Logout />
-        <div class="counters">
-          <IconCounter icon={PackageIcon} counter={2} />
+        <div className="login-text">
+          {logged_in ? `You are logged in as: ${username}` : "Not logged in"}
         </div>
+        <Logout />
+        {logged_in ? (
+          <div class="counters">
+            <IconCounter icon={PackageIcon} counter={2} />
+            <IconCounter icon={EggIcon} counter={2} />
+            <IconCounter icon={BellIcon} counter={2} />
+          </div>
+        ) : null}
       </div>
     );
   }

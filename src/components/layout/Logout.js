@@ -7,7 +7,13 @@ export default class Logout extends Component {
   render() {
     const { logged_in, logout } = this.context;
     return (
-      <div>{logged_in ? <button onClick={logout}>Logout</button> : null}</div>
+      <React.Fragment>
+        {logged_in ? (
+          <button className="logout rounded" onClick={logout}>
+            Logout
+          </button>
+        ) : null}
+      </React.Fragment>
     );
   }
 }
