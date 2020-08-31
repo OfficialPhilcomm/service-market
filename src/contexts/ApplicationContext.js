@@ -8,7 +8,7 @@ class ApplicationContextProvider extends Component {
     logged_in: false,
     username: null,
     auth_token: null,
-    my_oders: [],
+    my_orders: [],
     accepted_orders: [],
     all_orders: [],
     more_information_order_id: null,

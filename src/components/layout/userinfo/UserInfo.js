@@ -13,7 +13,7 @@ export default class UserInfo extends Component {
   componentDidMount() {}
 
   render() {
-    const { logged_in, username } = this.context;
+    const { logged_in, username, my_orders, accepted_orders } = this.context;
 
     return (
       <div className="user-info">
@@ -23,8 +23,8 @@ export default class UserInfo extends Component {
         <Logout />
         {logged_in ? (
           <div className="counters">
-            <IconCounter icon={PackageIcon} counter={2} />
-            <IconCounter icon={EggIcon} counter={2} />
+            <IconCounter icon={PackageIcon} counter={my_orders.length} />
+            <IconCounter icon={EggIcon} counter={accepted_orders.length} />
             {/* <IconCounter icon={BellIcon} counter={2} /> */}
           </div>
         ) : null}
