@@ -60,6 +60,7 @@ export default class CreateOrderPopup extends Component {
       gender: "Male",
       level: parseInt(this.selectLevel.value),
       ability: this.selectAbility.value,
+      item: this.selectItem.value,
 
       move1: this.selectMove1.value,
       move2: this.selectMove2.value,
