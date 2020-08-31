@@ -20,6 +20,22 @@ export default class BackendAPI {
     return response.data;
   }
 
+  static async authTokenValid(auth_token) {
+    const response = await axios({
+      method: "post",
+      url: this.BASE_URL + "auth/auth_token_valid.php",
+      data: {
+        auth_token: auth_token,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Api-Token": process.env.REACT_APP_API_KEY,
+      },
+    });
+
+    return response.data;
+  }
+
   static async requestMyOrders(auth_token) {
     const response = await axios({
       method: "post",

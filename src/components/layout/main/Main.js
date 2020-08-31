@@ -13,7 +13,7 @@ export default class Main extends Component {
   static contextType = ApplicationContext;
 
   componentDidMount() {
-    this.context.login("Philcomm", "");
+    this.context.check_auth_token_validity();
   }
 
   render() {

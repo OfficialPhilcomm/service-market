@@ -1,5 +1,6 @@
 import React, { Component, createContext } from "react";
 import BackendAPI from "../api/BackendAPI";
+import Cookies from "js-cookie";
 
 export const ApplicationContext = createContext();
 
@@ -23,11 +24,38 @@ class ApplicationContextProvider extends Component {
         auth_token: result.auth_token,
         username: result.username,
       });
+      Cookies.set("auth_token", result.auth_token, {
+        expires: 1,
+      });
     }
 
     this.request_all_orders();
     this.request_my_orders();
     this.request_accepted_orders();
+  };
+
+  check_auth_token_validity = async () => {
+    const authToken = Cookies.get("auth_token");
+
+    if (authToken) {
+      const result = await BackendAPI.authTokenValid(authToken);
+
+      if (result.token_valid) {
+        this.setState({
+          logged_in: true,
+          auth_token: authToken,
+          username: result.username,
+        });
+
+        this.request_all_orders();
+        this.request_my_orders();
+        this.request_accepted_orders();
+
+        Cookies.set("auth_token", authToken, {
+          expires: 1,
+        });
+      }
+    }
   };
 
   logout = async () => {
@@ -69,6 +97,7 @@ class ApplicationContextProvider extends Component {
         value={{
           ...this.state,
           login: this.login,
+          check_auth_token_validity: this.check_auth_token_validity,
           logout: this.logout,
           request_my_orders: this.request_my_orders,
           request_accepted_orders: this.request_accepted_orders,
