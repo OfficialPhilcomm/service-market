@@ -309,7 +309,11 @@ export default class CreateOrderPopup extends Component {
           ) : null}
         </div>
         <div className="buttons">
-          <button onClick={this.createOrder} disabled={!this.state.formValid}>
+          <button
+            className="rounded"
+            onClick={this.createOrder}
+            disabled={!this.state.formValid}
+          >
             Create
           </button>
         </div>

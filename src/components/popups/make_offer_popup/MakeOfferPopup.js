@@ -27,7 +27,9 @@ export default class MakeOfferPopup extends Component {
           <input type="number" ref={(input) => (this.inputPrice = input)} />
         </div>
         <div className="buttons">
-          <button onClick={this.onMakeOfferClick}>OK</button>
+          <button className="rounded" onClick={this.onMakeOfferClick}>
+            OK
+          </button>
         </div>
       </CloseablePopup>
     );

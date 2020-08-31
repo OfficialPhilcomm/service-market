@@ -41,7 +41,10 @@ export default class ListOffersPopup extends Component {
                 <td>{offer.username}</td>
                 <td>{offer.price}</td>
                 <td>
-                  <button onClick={() => this.acceptOffer(offer.id)}>
+                  <button
+                    className="rounded"
+                    onClick={() => this.acceptOffer(offer.id)}
+                  >
                     Accept
                   </button>
                 </td>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./MoreInformation.css";
 import BackendAPI from "../../../api/BackendAPI";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import StringUtils from "../../../api/StringUtils";
@@ -126,15 +127,19 @@ export default class MoreInformation extends Component {
             </table>
             <div className="buttons">
               {order.state_changeable && !order.finished ? (
-                <button onClick={this.openUpdateStatePopup}>
+                <button className="rounded" onClick={this.openUpdateStatePopup}>
                   Update state
                 </button>
               ) : null}
               {order.finishable ? (
-                <button onClick={this.finishOrder}>Finish order</button>
+                <button className="rounded" onClick={this.finishOrder}>
+                  Finish order
+                </button>
               ) : null}
               {order.closeable ? (
-                <button onClick={this.closeOrder}>Close order</button>
+                <button className="rounded" onClick={this.closeOrder}>
+                  Close order
+                </button>
               ) : null}
             </div>
           </React.Fragment>

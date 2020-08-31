@@ -115,14 +115,18 @@ export default class OrderBox extends Component {
         </div>
         <div className="buttons">
           {order.offer_possible ? (
-            <button onClick={this.openMakeOfferPopup}>Make offer</button>
+            <button className="rounded" onClick={this.openMakeOfferPopup}>
+              Make offer
+            </button>
           ) : null}
           {order.is_my_order && order.state === null && order.offer_count ? (
-            <button onClick={this.openListOffersPopup}>List offers</button>
+            <button className="rounded" onClick={this.openListOffersPopup}>
+              List offers
+            </button>
           ) : (
             <React.Fragment />
           )}
-          <button onClick={this.showAdvancedInformation}>
+          <button className="rounded" onClick={this.showAdvancedInformation}>
             Show information
           </button>
         </div>
