@@ -3,6 +3,24 @@ import axios from "axios";
 export default class BackendAPI {
   static BASE_URL = "https://philcomm.dev/servicemarket/api/";
 
+  static async register(email, un, pw) {
+    const response = await axios({
+      method: "post",
+      url: this.BASE_URL + "auth/register.php",
+      data: {
+        email: email,
+        username: un,
+        password: pw,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Api-Token": process.env.REACT_APP_API_KEY,
+      },
+    });
+
+    console.log(response);
+  }
+
   static async login(un, pw) {
     const response = await axios({
       method: "post",

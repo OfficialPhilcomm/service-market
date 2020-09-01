@@ -3,6 +3,7 @@ import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import "../Popup.css";
 import "./AuthPopup.css";
 import Popup from "../Popup";
+import BackendAPI from "../../../api/BackendAPI";
 
 export default class AuthPopup extends Component {
   static contextType = ApplicationContext;
@@ -30,6 +31,24 @@ export default class AuthPopup extends Component {
     const pw = this.loginPassword.value;
 
     this.context.login(un, pw);
+  };
+
+  register = () => {
+    const email = this.registerEmail.value;
+    const un = this.registerUsername.value;
+    const pw = this.registerPassword.value;
+    const rpw = this.registerRepeatPassword.value;
+
+    if (un === "") {
+      this.setState({ registerError: "Fill in a username" });
+    } else if (pw === "") {
+      this.setState({ registerError: "Fill in a password" });
+    } else if (pw !== rpw) {
+      this.setState({ registerError: "Passwords dont match" });
+    } else {
+      this.setState({ registerError: null, loginOpen: true });
+      BackendAPI.register(email, un, pw);
+    }
   };
 
   render() {
@@ -76,14 +95,60 @@ export default class AuthPopup extends Component {
               </tbody>
             </table>
           ) : (
-            <div>Register open</div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>E-Mail</td>
+                  <td>
+                    <input
+                      type="email"
+                      name="email"
+                      ref={(input) => (this.registerEmail = input)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Username</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="username"
+                      ref={(input) => (this.registerUsername = input)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Password</td>
+                  <td>
+                    <input
+                      type="password"
+                      name="password"
+                      ref={(input) => (this.registerPassword = input)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Repeat Password</td>
+                  <td>
+                    <input
+                      type="password"
+                      name="repeat-password"
+                      ref={(input) => (this.registerRepeatPassword = input)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan="2">{this.state.registerError}</td>
+                </tr>
+              </tbody>
+            </table>
           )}
         </div>
         <div className="buttons">
           {this.state.loginOpen ? (
             <button onClick={this.login}>Login</button>
           ) : (
-            <button>Register</button>
+            <button onClick={this.register}>Register</button>
           )}
         </div>
       </Popup>
