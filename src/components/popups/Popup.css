@@ -12,6 +12,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  padding: 10px;
+  overflow: hidden;
 }
 
 .popup {
@@ -21,6 +24,8 @@
   padding: 20px;
 
   position: relative;
+
+  overflow: hidden;
 }
 
 .popup .close-button {
