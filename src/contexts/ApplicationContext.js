@@ -15,19 +15,16 @@ class ApplicationContextProvider extends Component {
     more_information_order_id: null,
   };
 
-  login = async (u, p) => {
-    const result = await BackendAPI.login(u, p);
+  login = (auth_token, username) => {
+    Cookies.set("auth_token", auth_token, {
+      expires: 1,
+    });
 
-    if (result.success) {
-      this.setState({
-        logged_in: true,
-        auth_token: result.auth_token,
-        username: result.username,
-      });
-      Cookies.set("auth_token", result.auth_token, {
-        expires: 1,
-      });
-    }
+    this.setState({
+      logged_in: true,
+      auth_token: auth_token,
+      username: username,
+    });
 
     this.request_all_orders();
     this.request_my_orders();

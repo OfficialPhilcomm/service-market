@@ -10,7 +10,7 @@ export default class AuthPopup extends Component {
 
   state = {
     loginOpen: true,
-    registerFormValid: false,
+    loginError: null,
     registerError: null,
   };
 
@@ -25,13 +25,19 @@ export default class AuthPopup extends Component {
     this.setState({ loginOpen: !this.state.loginOpen });
   };
 
-  handleLoginSubmit = (event) => {
+  handleLoginSubmit = async (event) => {
     event.preventDefault();
 
     const un = this.loginUsername.value;
     const pw = this.loginPassword.value;
 
-    this.context.login(un, pw);
+    const result = await BackendAPI.login(un, pw);
+
+    if (result.success) {
+      this.context.login(result.auth_token, result.username);
+    } else {
+      this.setState({ loginError: result.error });
+    }
   };
 
   handleRegisterSubmit = async (event) => {
@@ -91,6 +97,13 @@ export default class AuthPopup extends Component {
                       />
                     </td>
                   </tr>
+                  {this.state.loginError ? (
+                    <tr>
+                      <td className="auth-error" colSpan={2}>
+                        {this.state.loginError}
+                      </td>
+                    </tr>
+                  ) : null}
                   <tr>
                     <td colSpan={2}>
                       <input type="submit" value="Login" />
