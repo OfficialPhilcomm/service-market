@@ -124,8 +124,12 @@ export default class AuthPopup extends Component {
                     <td>Username</td>
                     <td>
                       <input
+                        className="validation"
                         type="text"
                         name="username"
+                        minLength={4}
+                        required
+                        placeholder="min 4 characters"
                         ref={(input) => (this.registerUsername = input)}
                       />
                     </td>
