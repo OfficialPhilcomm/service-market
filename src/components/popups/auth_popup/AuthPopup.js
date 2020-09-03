@@ -115,6 +115,7 @@ export default class AuthPopup extends Component {
                         type="email"
                         name="email"
                         required
+                        placeholder="e.g. example@gmail.com"
                         ref={(input) => (this.registerEmail = input)}
                       />
                     </td>
@@ -133,8 +134,12 @@ export default class AuthPopup extends Component {
                     <td>Password</td>
                     <td>
                       <input
+                        className="validation"
                         type="password"
                         name="password"
+                        minLength={8}
+                        required
+                        placeholder="min 8 characters"
                         ref={(input) => (this.registerPassword = input)}
                       />
                     </td>
