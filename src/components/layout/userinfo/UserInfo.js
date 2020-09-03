@@ -23,8 +23,14 @@ export default class UserInfo extends Component {
         <Logout />
         {logged_in ? (
           <div className="counters">
-            <IconCounter icon={PackageIcon} counter={my_orders.length} />
-            <IconCounter icon={EggIcon} counter={accepted_orders.length} />
+            <IconCounter
+              icon={PackageIcon}
+              counter={my_orders ? my_orders.length : 0}
+            />
+            <IconCounter
+              icon={EggIcon}
+              counter={accepted_orders ? accepted_orders.length : 0}
+            />
             {/* <IconCounter icon={BellIcon} counter={2} /> */}
           </div>
         ) : null}
