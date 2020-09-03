@@ -138,8 +138,9 @@ export default class AuthPopup extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <td colSpan={2}></td>
-                    <input type="submit" value="Register" />
+                    <td colSpan={2}>
+                      <input type="submit" value="Register" />
+                    </td>
                   </tr>
                 </tbody>
               </table>
