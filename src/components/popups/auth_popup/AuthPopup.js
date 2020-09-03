@@ -111,8 +111,10 @@ export default class AuthPopup extends Component {
                     <td>Email</td>
                     <td>
                       <input
+                        className="validation"
                         type="email"
                         name="email"
+                        required
                         ref={(input) => (this.registerEmail = input)}
                       />
                     </td>
