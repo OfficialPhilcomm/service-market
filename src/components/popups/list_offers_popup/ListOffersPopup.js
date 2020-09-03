@@ -33,9 +33,12 @@ export default class ListOffersPopup extends Component {
   render() {
     return (
       <CloseablePopup closeCallback={this.props.closeCallback}>
-        Here are all offers for id {this.props.orderID}
         <table>
           <tbody>
+            <tr>
+              <th>User</th>
+              <th>Price</th>
+            </tr>
             {this.state.offers.map((offer) => (
               <tr key={offer.id}>
                 <td>{offer.username}</td>
