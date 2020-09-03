@@ -1,0 +1,36 @@
+input {
+  border-radius: 1000px;
+  background-color: white;
+}
+
+input:not([type="submit"]) {
+  padding: 5px 10px;
+  border: 1px solid #9c9c9c;
+}
+
+input[type="submit"] {
+  border: 2px solid #707070;
+  color: #707070;
+  border-radius: 1000px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+
+  font-size: 10pt;
+}
+
+input:focus {
+  border: 1px solid #242424;
+  outline: none;
+}
+input.validation:invalid {
+  border: 1px solid #ed4040;
+}
+input.validation:valid {
+  border: 1px solid #00c949;
+}
+
+input[type="submit"]:hover {
+  color: #525252;
+  border: 2px solid #525252;
+}
