@@ -9,3 +9,7 @@
 .input-stat {
   width: 75px;
 }
+
+.create-error {
+  color: red;
+}

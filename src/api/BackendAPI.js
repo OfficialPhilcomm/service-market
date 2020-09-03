@@ -133,7 +133,7 @@ export default class BackendAPI {
   }
 
   static async createOrder(auth_token, order_data) {
-    await axios({
+    const response = await axios({
       method: "post",
       url: this.BASE_URL + "orders/new_order.php",
       data: {
@@ -145,6 +145,8 @@ export default class BackendAPI {
         "Auth-Token": auth_token,
       },
     });
+
+    return response.data;
   }
 
   static async changeState(auth_token, order_id, state) {

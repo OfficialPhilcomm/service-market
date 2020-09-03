@@ -11,6 +11,7 @@ export default class CreateOrderPopup extends Component {
 
   state = {
     p: null,
+    createError: null,
   };
 
   async componentDidMount() {
@@ -59,9 +60,13 @@ export default class CreateOrderPopup extends Component {
       ev_spe: parseInt(this.inputEVSpeed.value),
     };
 
-    await BackendAPI.createOrder(this.context.auth_token, args);
+    const result = await BackendAPI.createOrder(this.context.auth_token, args);
 
-    this.props.closeCallback();
+    if (result.success) {
+      this.props.closeCallback();
+    } else {
+      this.setState({ createError: result.error });
+    }
   };
 
   render() {
@@ -327,6 +332,9 @@ export default class CreateOrderPopup extends Component {
                     </tr>
                   </tbody>
                 </table>
+                {this.state.createError ? (
+                  <div className="create-error">{this.state.createError}</div>
+                ) : null}
                 <input type="submit" value="Create Order" />
               </React.Fragment>
             ) : null}
