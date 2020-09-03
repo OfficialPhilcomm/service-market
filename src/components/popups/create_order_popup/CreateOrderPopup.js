@@ -196,7 +196,7 @@ export default class CreateOrderPopup extends Component {
                       <td>IV</td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputIVHP = input)}
                           type="number"
                           required
@@ -207,7 +207,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputIVAtk = input)}
                           type="number"
                           required
@@ -218,7 +218,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputIVDef = input)}
                           type="number"
                           required
@@ -229,7 +229,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputIVSpAtk = input)}
                           type="number"
                           required
@@ -240,7 +240,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputIVSpDef = input)}
                           type="number"
                           required
@@ -251,7 +251,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputIVSpeed = input)}
                           type="number"
                           required
@@ -265,7 +265,7 @@ export default class CreateOrderPopup extends Component {
                       <td>EV</td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputEVHP = input)}
                           type="number"
                           required
@@ -276,7 +276,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputEVAtk = input)}
                           type="number"
                           required
@@ -287,7 +287,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputEVDef = input)}
                           type="number"
                           required
@@ -298,7 +298,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputEVSpAtk = input)}
                           type="number"
                           required
@@ -309,7 +309,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputEVSpDef = input)}
                           type="number"
                           required
@@ -320,7 +320,7 @@ export default class CreateOrderPopup extends Component {
                       </td>
                       <td>
                         <input
-                          className="input-stat"
+                          className="input-stat validation"
                           ref={(input) => (this.inputEVSpeed = input)}
                           type="number"
                           required
