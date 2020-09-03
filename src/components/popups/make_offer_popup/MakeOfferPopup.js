@@ -40,7 +40,7 @@ export default class MakeOfferPopup extends Component {
                 ref={(input) => (this.inputPrice = input)}
               />
             </div>
-            <div class="submit-offer">
+            <div className="submit-offer">
               <input type="submit" value="Make offer" />
             </div>
           </form>
