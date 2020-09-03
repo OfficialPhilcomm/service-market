@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import "./components/buttons.css";
+import "./styles/buttons.css";
+import "./styles/inputs.css";
 import NavBar from "./components/layout/navbar/NavBar";
 import Main from "./components/layout/main/Main";
 import ApplicationContextProvider from "./contexts/ApplicationContext";

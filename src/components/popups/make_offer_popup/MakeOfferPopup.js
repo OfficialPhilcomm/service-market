@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./MakeOfferPopup.css";
 import CloseablePopup from "../CloseablePopup";
 import BackendAPI from "../../../api/BackendAPI";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
@@ -10,7 +11,12 @@ export default class MakeOfferPopup extends Component {
     stateValue: this.props.state,
   };
 
-  onMakeOfferClick = async (event) => {
+  componentDidMount() {
+    this.handleMakeOffer = this.handleMakeOffer.bind(this);
+  }
+
+  handleMakeOffer = async (event) => {
+    event.preventDefault();
     await BackendAPI.makeOffer(
       this.context.auth_token,
       this.props.orderID,
@@ -23,12 +29,21 @@ export default class MakeOfferPopup extends Component {
     return (
       <CloseablePopup closeCallback={this.props.closeCallback}>
         <div className="content">
-          <input type="number" ref={(input) => (this.inputPrice = input)} />
-        </div>
-        <div className="buttons">
-          <button className="rounded" onClick={this.onMakeOfferClick}>
-            OK
-          </button>
+          <form onSubmit={this.handleMakeOffer}>
+            <div>
+              <input
+                className="validation"
+                type="number"
+                required
+                min={1}
+                placeholder="e.g. 100000"
+                ref={(input) => (this.inputPrice = input)}
+              />
+            </div>
+            <div class="submit-offer">
+              <input type="submit" value="Make offer" />
+            </div>
+          </form>
         </div>
       </CloseablePopup>
     );

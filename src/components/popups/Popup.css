@@ -53,20 +53,3 @@
   justify-content: space-around;
   align-items: center;
 }
-
-.popup input {
-  border-radius: 100px;
-  padding: 5px 10px;
-  background-color: white;
-  border: 1px solid #9c9c9c;
-}
-.popup input:focus {
-  border: 1px solid #242424;
-  outline: none;
-}
-.popup input.validation:invalid {
-  border: 1px solid #ed4040;
-}
-.popup input.validation:valid {
-  border: 1px solid #00c949;
-}
