@@ -18,6 +18,7 @@ export default class CreateOrderPopup extends Component {
     this.handleCreateOrder = this.handleCreateOrder.bind(this);
     const pokemon = await PokeAPI.getAdvancedData(0);
     this.setState({ p: pokemon });
+    this.inputIVHP.focus();
   }
 
   switchPokemon = (event) => {
