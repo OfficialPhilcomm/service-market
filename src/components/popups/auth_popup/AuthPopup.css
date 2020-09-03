@@ -1,3 +1,7 @@
 .auth-popup-register-switch {
   cursor: pointer;
 }
+
+.auth-error {
+  color: red;
+}

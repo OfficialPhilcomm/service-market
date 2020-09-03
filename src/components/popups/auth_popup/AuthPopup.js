@@ -11,6 +11,7 @@ export default class AuthPopup extends Component {
   state = {
     loginOpen: true,
     registerFormValid: false,
+    registerError: null,
   };
 
   componentDidMount() {
@@ -33,23 +34,18 @@ export default class AuthPopup extends Component {
     this.context.login(un, pw);
   };
 
-  handleRegisterSubmit = (event) => {
+  handleRegisterSubmit = async (event) => {
     event.preventDefault();
 
-    const email = this.registerEmail.value;
     const un = this.registerUsername.value;
     const pw = this.registerPassword.value;
-    const rpw = this.registerRepeatPassword.value;
 
-    if (un === "") {
-      this.setState({ registerError: "Fill in a username" });
-    } else if (pw === "") {
-      this.setState({ registerError: "Fill in a password" });
-    } else if (pw !== rpw) {
-      this.setState({ registerError: "Passwords dont match" });
+    const result = await BackendAPI.register(un, pw);
+
+    if (result.success) {
+      this.setState({ loginOpen: true });
     } else {
-      this.setState({ registerError: null, loginOpen: true });
-      BackendAPI.register(email, un, pw);
+      this.setState({ registerError: result.errors[0] });
     }
   };
 
@@ -108,19 +104,6 @@ export default class AuthPopup extends Component {
               <table>
                 <tbody>
                   <tr>
-                    <td>Email</td>
-                    <td>
-                      <input
-                        className="validation"
-                        type="email"
-                        name="email"
-                        required
-                        placeholder="e.g. example@gmail.com"
-                        ref={(input) => (this.registerEmail = input)}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
                     <td>Username</td>
                     <td>
                       <input
@@ -148,6 +131,13 @@ export default class AuthPopup extends Component {
                       />
                     </td>
                   </tr>
+                  {this.state.registerError ? (
+                    <tr>
+                      <td className="auth-error" colSpan={2}>
+                        {this.state.registerError}
+                      </td>
+                    </tr>
+                  ) : null}
                   <tr>
                     <td colSpan={2}>
                       <input type="submit" value="Register" />
