@@ -13,6 +13,7 @@ export default class MakeOfferPopup extends Component {
 
   componentDidMount() {
     this.handleMakeOffer = this.handleMakeOffer.bind(this);
+    this.inputPrice.focus();
   }
 
   handleMakeOffer = async (event) => {
