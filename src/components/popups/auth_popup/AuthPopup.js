@@ -10,6 +10,7 @@ export default class AuthPopup extends Component {
 
   state = {
     loginOpen: true,
+    registerFormValid: false,
   };
 
   componentDidMount() {
@@ -49,6 +50,22 @@ export default class AuthPopup extends Component {
       this.setState({ registerError: null, loginOpen: true });
       BackendAPI.register(email, un, pw);
     }
+  };
+
+  validateRegisterForm = () => {
+    const stateValid = this.state.registerFormValid;
+
+    let isValid = true;
+    if (this.registerEmail.value === "") {
+      isValid = false;
+    }
+    if (this.registerUsername.value === "") {
+      isValid = false;
+    }
+    if (this.registerPassword.value.length < 8) {
+      isValid = false;
+    }
+    if (isValid !== stateValid) this.setState({ registerFormValid: isValid });
   };
 
   render() {
@@ -103,6 +120,7 @@ export default class AuthPopup extends Component {
                     <input
                       type="email"
                       name="email"
+                      onChange={this.validateRegisterForm}
                       ref={(input) => (this.registerEmail = input)}
                     />
                   </td>
@@ -113,6 +131,7 @@ export default class AuthPopup extends Component {
                     <input
                       type="text"
                       name="username"
+                      onChange={this.validateRegisterForm}
                       ref={(input) => (this.registerUsername = input)}
                     />
                   </td>
@@ -123,6 +142,7 @@ export default class AuthPopup extends Component {
                     <input
                       type="password"
                       name="password"
+                      onChange={this.validateRegisterForm}
                       ref={(input) => (this.registerPassword = input)}
                     />
                   </td>
@@ -133,6 +153,7 @@ export default class AuthPopup extends Component {
                     <input
                       type="password"
                       name="repeat-password"
+                      onChange={this.validateRegisterForm}
                       ref={(input) => (this.registerRepeatPassword = input)}
                     />
                   </td>
@@ -148,7 +169,12 @@ export default class AuthPopup extends Component {
           {this.state.loginOpen ? (
             <button onClick={this.login}>Login</button>
           ) : (
-            <button onClick={this.register}>Register</button>
+            <button
+              disabled={!this.state.registerFormValid}
+              onClick={this.register}
+            >
+              Register
+            </button>
           )}
         </div>
       </Popup>
