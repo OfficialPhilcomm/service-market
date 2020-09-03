@@ -11,35 +11,10 @@ export default class CreateOrderPopup extends Component {
 
   state = {
     p: null,
-    formValid: false,
-  };
-
-  validateForm = () => {
-    const values = [
-      this.inputIVHP.value,
-      this.inputIVAtk.value,
-      this.inputIVDef.value,
-      this.inputIVSpAtk.value,
-      this.inputIVSpDef.value,
-      this.inputIVSpeed.value,
-      this.inputEVHP.value,
-      this.inputEVAtk.value,
-      this.inputEVDef.value,
-      this.inputEVSpAtk.value,
-      this.inputEVSpDef.value,
-      this.inputEVSpeed.value,
-    ];
-
-    let isValid = true;
-
-    for (let value of values) {
-      if (value === "" || value < 0) isValid = false;
-    }
-
-    this.setState({ formValid: isValid });
   };
 
   async componentDidMount() {
+    this.handleCreateOrder = this.handleCreateOrder.bind(this);
     const pokemon = await PokeAPI.getAdvancedData(0);
     this.setState({ p: pokemon });
   }
@@ -54,7 +29,9 @@ export default class CreateOrderPopup extends Component {
     this.setState({ p: pokemon });
   };
 
-  createOrder = async () => {
+  handleCreateOrder = async (event) => {
+    event.preventDefault();
+
     const args = {
       pokemon_name: this.selectPokemon.value,
       gender: "Male",
@@ -93,47 +70,70 @@ export default class CreateOrderPopup extends Component {
     return (
       <CloseablePopup closeCallback={this.props.closeCallback}>
         <div className="content">
-          <div className="create-row">
-            <select
-              onChange={this.switchPokemon}
-              ref={(select) => (this.selectPokemon = select)}
-            >
-              {PokeAPI.pokemonList.map((pokemon, index) => (
-                <option value={pokemon.name} key={index}>
-                  {StringUtils.humanize(pokemon.name)}
-                </option>
-              ))}
-            </select>
-            <span>lvl</span>
-            <select ref={(select) => (this.selectLevel = select)}>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-          </div>
-          {p ? (
-            <React.Fragment>
-              <div className="create-row">
-                <select ref={(select) => (this.selectAbility = select)}>
-                  {p.data.abilities.map((ability) => (
-                    <option
-                      value={ability.ability.name}
-                      key={ability.ability.name}
+          <form onSubmit={this.handleCreateOrder}>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <select
+                      onChange={this.switchPokemon}
+                      ref={(select) => (this.selectPokemon = select)}
                     >
-                      {StringUtils.humanize(ability.ability.name)}
-                    </option>
-                  ))}
-                </select>
-                <select ref={(select) => (this.selectItem = select)}>
-                  {PokeAPI.itemList.map((item) => (
-                    <option value={item.name} key={item.name}>
-                      {StringUtils.humanize(item.name)}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="create-row">
+                      {PokeAPI.pokemonList.map((pokemon, index) => (
+                        <option value={pokemon.name} key={index}>
+                          {StringUtils.humanize(pokemon.name)}
+                        </option>
+                      ))}
+                    </select>
+                  </td>
+                  <td>lvl</td>
+                  <td>
+                    <select ref={(select) => (this.selectLevel = select)}>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            {p ? (
+              <React.Fragment>
                 <table>
                   <tbody>
+                    <tr>
+                      <td>Ability</td>
+                      <td>
+                        <select ref={(select) => (this.selectAbility = select)}>
+                          {p.data.abilities.map((ability) => (
+                            <option
+                              value={ability.ability.name}
+                              key={ability.ability.name}
+                            >
+                              {StringUtils.humanize(ability.ability.name)}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Item</td>
+                      <td>
+                        <select ref={(select) => (this.selectItem = select)}>
+                          {PokeAPI.itemList.map((item) => (
+                            <option value={item.name} key={item.name}>
+                              {StringUtils.humanize(item.name)}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td colSpan={2}>Moves</td>
+                    </tr>
                     <tr>
                       <td>
                         <select ref={(select) => (this.selectMove1 = select)}>
@@ -176,8 +176,6 @@ export default class CreateOrderPopup extends Component {
                     </tr>
                   </tbody>
                 </table>
-              </div>
-              <div className="create-row">
                 <table>
                   <tbody>
                     <tr>
@@ -193,56 +191,68 @@ export default class CreateOrderPopup extends Component {
                       <td>IV</td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputIVHP = input)}
                           type="number"
+                          required
                           min="0"
                           max="31"
-                          onChange={this.validateForm}
+                          placeholder="0-31"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputIVAtk = input)}
                           type="number"
+                          required
                           min="0"
                           max="31"
-                          onChange={this.validateForm}
+                          placeholder="0-31"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputIVDef = input)}
                           type="number"
+                          required
                           min="0"
                           max="31"
-                          onChange={this.validateForm}
+                          placeholder="0-31"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputIVSpAtk = input)}
                           type="number"
+                          required
                           min="0"
                           max="31"
-                          onChange={this.validateForm}
+                          placeholder="0-31"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputIVSpDef = input)}
                           type="number"
+                          required
                           min="0"
                           max="31"
-                          onChange={this.validateForm}
+                          placeholder="0-31"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputIVSpeed = input)}
                           type="number"
+                          required
                           min="0"
                           max="31"
-                          onChange={this.validateForm}
+                          placeholder="0-31"
                         />
                       </td>
                     </tr>
@@ -250,73 +260,77 @@ export default class CreateOrderPopup extends Component {
                       <td>EV</td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputEVHP = input)}
                           type="number"
+                          required
                           min="0"
                           max="252"
-                          onChange={this.validateForm}
+                          placeholder="0-252"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputEVAtk = input)}
                           type="number"
+                          required
                           min="0"
                           max="252"
-                          onChange={this.validateForm}
+                          placeholder="0-252"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputEVDef = input)}
                           type="number"
+                          required
                           min="0"
                           max="252"
-                          onChange={this.validateForm}
+                          placeholder="0-252"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputEVSpAtk = input)}
                           type="number"
+                          required
                           min="0"
                           max="252"
-                          onChange={this.validateForm}
+                          placeholder="0-252"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputEVSpDef = input)}
                           type="number"
+                          required
                           min="0"
                           max="252"
-                          onChange={this.validateForm}
+                          placeholder="0-252"
                         />
                       </td>
                       <td>
                         <input
+                          className="input-stat"
                           ref={(input) => (this.inputEVSpeed = input)}
                           type="number"
+                          required
                           min="0"
                           max="252"
-                          onChange={this.validateForm}
+                          placeholder="0-252"
                         />
                       </td>
                     </tr>
                   </tbody>
                 </table>
-              </div>
-            </React.Fragment>
-          ) : null}
-        </div>
-        <div className="buttons">
-          <button
-            className="rounded"
-            onClick={this.createOrder}
-            disabled={!this.state.formValid}
-          >
-            Create
-          </button>
+                <input type="submit" value="Create Order" />
+              </React.Fragment>
+            ) : null}
+          </form>
         </div>
       </CloseablePopup>
     );
