@@ -43,9 +43,9 @@ export default class AuthPopup extends Component {
     const result = await BackendAPI.register(un, pw);
 
     if (result.success) {
-      this.setState({ loginOpen: true });
+      this.setState({ loginOpen: true, registerError: null });
     } else {
-      this.setState({ registerError: result.errors[0] });
+      this.setState({ registerError: result.error });
     }
   };
 
