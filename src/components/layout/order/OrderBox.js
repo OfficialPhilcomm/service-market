@@ -20,6 +20,7 @@ export default class OrderBox extends Component {
     this.setState({ makeOfferPopupOpen: true });
   };
   closeMakeOfferPopup = () => {
+    this.context.request_all_orders();
     this.setState({ makeOfferPopupOpen: false });
   };
   openListOffersPopup = () => {
