@@ -31,7 +31,7 @@ export default class UserInfo extends Component {
               icon={EggIcon}
               counter={accepted_orders ? accepted_orders.length : 0}
             />
-            {/* <IconCounter icon={BellIcon} counter={2} /> */}
+            {false ? <IconCounter icon={BellIcon} counter={2} /> : null}
           </div>
         ) : null}
       </div>
