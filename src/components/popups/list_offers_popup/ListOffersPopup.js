@@ -7,6 +7,7 @@ export default class ListOffersPopup extends Component {
   static contextType = ApplicationContext;
 
   state = {
+    loading: true,
     offers: [],
   };
 
@@ -15,7 +16,7 @@ export default class ListOffersPopup extends Component {
       this.context.auth_token,
       this.props.orderID
     );
-    this.setState({ offers: result.offers });
+    this.setState({ loading: false, offers: result.offers });
   }
 
   acceptOffer = async (offerID) => {
@@ -38,21 +39,30 @@ export default class ListOffersPopup extends Component {
             <tr>
               <th>User</th>
               <th>Price</th>
+              <th></th>
             </tr>
-            {this.state.offers.map((offer) => (
-              <tr key={offer.id}>
-                <td>{offer.username}</td>
-                <td>{offer.price}</td>
-                <td>
-                  <button
-                    className="rounded"
-                    onClick={() => this.acceptOffer(offer.id)}
-                  >
-                    Accept
-                  </button>
-                </td>
+            {this.state.loading ? (
+              <tr>
+                <td colSpan={3}>Loading</td>
               </tr>
-            ))}
+            ) : (
+              <React.Fragment>
+                {this.state.offers.map((offer) => (
+                  <tr key={offer.id}>
+                    <td>{offer.username}</td>
+                    <td>{offer.price}</td>
+                    <td>
+                      <button
+                        className="rounded"
+                        onClick={() => this.acceptOffer(offer.id)}
+                      >
+                        Accept
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            )}
           </tbody>
         </table>
       </CloseablePopup>
