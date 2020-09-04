@@ -48,6 +48,8 @@ export default class AuthPopup extends Component {
 
     const result = await BackendAPI.register(un, pw);
 
+    console.log(result);
+
     if (result.success) {
       this.setState({ loginOpen: true, registerError: null });
     } else {
@@ -91,7 +93,7 @@ export default class AuthPopup extends Component {
                     <td>Password</td>
                     <td>
                       <input
-                        type="text"
+                        type="password"
                         name="password"
                         ref={(input) => (this.loginPassword = input)}
                       />
