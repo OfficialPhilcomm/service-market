@@ -20,8 +20,6 @@ export default class PokeAPI {
       url: this.POKE_API_BASE_URL + "item?limit=954",
     });
 
-    console.log(itemResponse.data.results);
-
     this.itemList = [
       {
         name: "none",
