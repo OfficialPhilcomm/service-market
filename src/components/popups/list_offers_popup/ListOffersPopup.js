@@ -37,8 +37,8 @@ export default class ListOffersPopup extends Component {
         <table>
           <tbody>
             <tr>
-              <th>User</th>
               <th>Price</th>
+              <th>Days needed</th>
               <th></th>
             </tr>
             {this.state.loading ? (
@@ -49,8 +49,8 @@ export default class ListOffersPopup extends Component {
               <React.Fragment>
                 {this.state.offers.map((offer) => (
                   <tr key={offer.id}>
-                    <td>{offer.username}</td>
                     <td>{offer.price}</td>
+                    <td>{offer.days_needed}</td>
                     <td>
                       <button
                         className="rounded"
