@@ -39,6 +39,10 @@
   height: 18px;
 }
 
+.popup .title {
+  width: 100%;
+}
+
 .popup .content {
   width: 100%;
 

@@ -9,7 +9,7 @@ export default class CloseablePopup extends Component {
 
   render() {
     return (
-      <Popup>
+      <Popup title={this.props.title}>
         <CloseButton className="close-button" onClick={this.closePopup} />
         {this.props.children}
       </Popup>
