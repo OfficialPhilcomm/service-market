@@ -58,8 +58,10 @@ export default class AuthPopup extends Component {
   };
 
   render() {
+    const title = this.state.loginOpen ? "Login" : "Register";
+
     return (
-      <Popup>
+      <Popup title={title}>
         <div className="content">
           <span
             className="auth-popup-register-switch"
