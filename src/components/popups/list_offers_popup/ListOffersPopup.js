@@ -33,7 +33,7 @@ export default class ListOffersPopup extends Component {
 
   render() {
     return (
-      <CloseablePopup closeCallback={this.props.closeCallback}>
+      <CloseablePopup title="Offers" closeCallback={this.props.closeCallback}>
         <table>
           <tbody>
             <tr>

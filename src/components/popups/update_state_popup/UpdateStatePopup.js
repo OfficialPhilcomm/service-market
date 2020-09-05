@@ -23,7 +23,10 @@ export default class UpdateStatePopup extends Component {
 
   render() {
     return (
-      <CloseablePopup closeCallback={this.props.closeCallback}>
+      <CloseablePopup
+        title="Update state"
+        closeCallback={this.props.closeCallback}
+      >
         Update the state for {this.props.orderID}
         <select
           value={this.state.stateValue}

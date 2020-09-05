@@ -35,7 +35,10 @@ EV: ${order.order_data.evs.ev_hp} ${order.order_data.evs.ev_atk} ${
     }`;
 
     return (
-      <CloseablePopup closeCallback={this.props.closeCallback}>
+      <CloseablePopup
+        title="Export data as text"
+        closeCallback={this.props.closeCallback}
+      >
         <div className="content">
           <textarea className="export-area" readOnly value={value} />
         </div>

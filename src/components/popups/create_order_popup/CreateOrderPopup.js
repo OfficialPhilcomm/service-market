@@ -75,7 +75,10 @@ export default class CreateOrderPopup extends Component {
     const p = this.state.p;
 
     return (
-      <CloseablePopup closeCallback={this.props.closeCallback}>
+      <CloseablePopup
+        title="Create order"
+        closeCallback={this.props.closeCallback}
+      >
         <div className="content">
           <form onSubmit={this.handleCreateOrder}>
             <table>

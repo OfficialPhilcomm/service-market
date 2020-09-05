@@ -29,7 +29,10 @@ export default class MakeOfferPopup extends Component {
 
   render() {
     return (
-      <CloseablePopup closeCallback={this.props.closeCallback}>
+      <CloseablePopup
+        title="Make Offer"
+        closeCallback={this.props.closeCallback}
+      >
         <div className="content">
           <form onSubmit={this.handleMakeOffer}>
             <table>
