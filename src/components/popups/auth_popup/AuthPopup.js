@@ -51,7 +51,9 @@ export default class AuthPopup extends Component {
     if (result.success) {
       this.setState({ loginOpen: true, registerError: null });
     } else {
-      this.setState({ registerError: result.error });
+      this.setState({
+        registerError: result.error,
+      });
     }
   };
 
@@ -147,7 +149,9 @@ export default class AuthPopup extends Component {
                   {this.state.registerError ? (
                     <tr>
                       <td className="auth-error" colSpan={2}>
-                        {this.state.registerError}
+                        {this.state.registerError.split("\r\n").map((line) => (
+                          <div className="auth-error">{line}</div>
+                        ))}
                       </td>
                     </tr>
                   ) : null}
