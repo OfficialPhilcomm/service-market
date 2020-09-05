@@ -21,7 +21,8 @@ export default class MakeOfferPopup extends Component {
     await BackendAPI.makeOffer(
       this.context.auth_token,
       this.props.orderID,
-      parseInt(this.inputPrice.value)
+      parseInt(this.inputPrice.value),
+      parseInt(this.inputDaysNeeded.value)
     );
     this.props.closeCallback();
   };
@@ -31,19 +32,39 @@ export default class MakeOfferPopup extends Component {
       <CloseablePopup closeCallback={this.props.closeCallback}>
         <div className="content">
           <form onSubmit={this.handleMakeOffer}>
-            <div>
-              <input
-                className="validation"
-                type="number"
-                required
-                min={1}
-                placeholder="e.g. 100000"
-                ref={(input) => (this.inputPrice = input)}
-              />
-            </div>
-            <div className="submit-offer">
-              <input type="submit" value="Make offer" />
-            </div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Price</td>
+                  <td>
+                    <input
+                      className="validation"
+                      type="number"
+                      required
+                      min={1}
+                      placeholder="e.g. 100000"
+                      ref={(input) => (this.inputPrice = input)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Days needed</td>
+                  <td>
+                    <input
+                      type="number"
+                      required
+                      min={1}
+                      ref={(input) => (this.inputDaysNeeded = input)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2}>
+                    <input type="submit" value="Make offer" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </form>
         </div>
       </CloseablePopup>

@@ -165,13 +165,14 @@ export default class BackendAPI {
     });
   }
 
-  static async makeOffer(auth_token, order_id, price) {
+  static async makeOffer(auth_token, order_id, price, days_needed) {
     const response = await axios({
       method: "post",
       url: this.BASE_URL + "offers/new_offer.php",
       data: {
         user_order_id: order_id,
         price: price,
+        days_needed: days_needed,
       },
       headers: {
         "Content-Type": "application/json",

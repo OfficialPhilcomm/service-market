@@ -110,6 +110,7 @@ export default class OrderBox extends Component {
             <span>
               {this.thirtyOneCount()}x31 {this.thirtyCount()}x30
             </span>
+            <span>Nature: {StringUtils.humanize(order.nature)}</span>
           </div>
           <div className="moves">
             <span>{StringUtils.humanize(order.move1)}</span>

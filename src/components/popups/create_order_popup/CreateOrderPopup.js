@@ -37,6 +37,7 @@ export default class CreateOrderPopup extends Component {
     const args = {
       pokemon_name: this.selectPokemon.value,
       gender: "Male",
+      nature: this.selectNature.value,
       level: parseInt(this.selectLevel.value),
       ability: this.selectAbility.value,
       item: this.selectItem.value,
@@ -106,6 +107,18 @@ export default class CreateOrderPopup extends Component {
               <React.Fragment>
                 <table>
                   <tbody>
+                    <tr>
+                      <td>Nature</td>
+                      <td>
+                        <select ref={(select) => (this.selectNature = select)}>
+                          {PokeAPI.natureList.map((nature) => (
+                            <option value={nature} key={nature}>
+                              {StringUtils.humanize(nature)}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
                     <tr>
                       <td>Ability</td>
                       <td>
