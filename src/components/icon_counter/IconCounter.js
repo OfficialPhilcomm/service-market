@@ -7,6 +7,9 @@ export default class IconCounter extends Component {
       <div className="icon-counter">
         <img src={this.props.icon} alt="counter icon" />
         <div className="counter">{this.props.counter}</div>
+        {this.props.description ? (
+          <div className="description">{this.props.description}</div>
+        ) : null}
       </div>
     );
   }

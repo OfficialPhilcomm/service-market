@@ -120,12 +120,15 @@ export default class OrderBox extends Component {
           </div>
         </div>
         <div className="buttons">
-          {order.offer_possible && !order.offered_price ? (
+          {order.offer ? (
+            <span>
+              Offered: {order.offer.price} / {order.offer.days_needed}
+            </span>
+          ) : null}
+          {order.offer_possible && !order.offer ? (
             <button className="rounded" onClick={this.openMakeOfferPopup}>
               Make offer
             </button>
-          ) : order.offered_price ? (
-            <span>Offered: {order.offered_price}</span>
           ) : null}
           {order.is_my_order && order.state === null && order.offer_count ? (
             <button className="rounded" onClick={this.openListOffersPopup}>
