@@ -1,6 +1,6 @@
 .icon-counter {
   position: relative;
-  width: 50px;
+  width: 100px;
   height: 50px;
 }
 
@@ -22,4 +22,5 @@
 }
 
 .icon-counter .description {
+  text-align: center;
 }

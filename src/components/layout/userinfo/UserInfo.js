@@ -26,10 +26,12 @@ export default class UserInfo extends Component {
             <IconCounter
               icon={PackageIcon}
               counter={my_orders ? my_orders.length : 0}
+              description="My Orders"
             />
             <IconCounter
               icon={EggIcon}
               counter={accepted_orders ? accepted_orders.length : 0}
+              description="Accepted Orders"
             />
             {false ? <IconCounter icon={BellIcon} counter={2} /> : null}
           </div>
