@@ -7,7 +7,7 @@ export default class Popup extends Component {
       <div className="popup-container">
         <div className="popup">
           {this.props.title ? (
-            <div className="title">{this.props.title}</div>
+            <div className="popup-title">{this.props.title}</div>
           ) : null}
           {this.props.children}
         </div>
