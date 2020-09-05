@@ -8,6 +8,7 @@ export default class ExportDataPopup extends Component {
     const order = this.props.order;
 
     const value = `Username: ${order.buyer}
+Price: ${order.price}
 
 ${StringUtils.humanize(order.order_data.pokemon_name)} lvl ${
       order.order_data.level
