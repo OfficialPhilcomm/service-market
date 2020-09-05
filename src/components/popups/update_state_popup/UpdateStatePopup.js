@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./UpdateStatePopup.css";
 import CloseablePopup from "../CloseablePopup";
 import BackendAPI from "../../../api/BackendAPI";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
@@ -9,16 +10,22 @@ export default class UpdateStatePopup extends Component {
 
   state = {
     stateValue: this.props.state,
+    successForState: null,
   };
 
   onOrderStateChange = async (event) => {
-    this.setState({ stateValue: event.target.value });
+    const newState = event.target.value;
+    this.setState({ stateValue: newState });
 
-    BackendAPI.changeState(
+    const response = await BackendAPI.changeState(
       this.context.auth_token,
       this.props.orderID,
-      parseInt(event.target.value)
+      parseInt(newState)
     );
+
+    if (response.success) {
+      this.setState({ successForState: parseInt(newState) });
+    }
   };
 
   render() {
@@ -27,17 +34,27 @@ export default class UpdateStatePopup extends Component {
         title="Update state"
         closeCallback={this.props.closeCallback}
       >
-        Update the state for {this.props.orderID}
-        <select
-          value={this.state.stateValue}
-          onChange={this.onOrderStateChange}
-        >
-          {StringUtils.states.map((state, stateID) => (
-            <option value={stateID} key={stateID}>
-              {state}
-            </option>
-          ))}
-        </select>
+        <div className="content">
+          <div>
+            Update the state for {this.props.orderID}
+            <select
+              value={this.state.stateValue}
+              onChange={this.onOrderStateChange}
+            >
+              {StringUtils.states.map((state, stateID) => (
+                <option value={stateID} key={stateID}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </div>
+          {this.state.successForState !== null ? (
+            <div className="change-state-success">
+              State updated to{" "}
+              {StringUtils.stateToString(this.state.successForState)}
+            </div>
+          ) : null}
+        </div>
       </CloseablePopup>
     );
   }
