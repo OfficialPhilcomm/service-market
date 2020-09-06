@@ -8,6 +8,7 @@ import ProgressBar from "../../progressbar/ProgressBar";
 import ExportDataPopup from "../../popups/export_data/ExportDataPopup";
 import PokeAPI from "../../../api/PokeAPI";
 import PokeballImage from "../../../img/pokeball.svg";
+import { ReactComponent as PokeDollar } from "../../../img/poke-dollar.svg";
 
 export default class MoreInformation extends Component {
   static contextType = ApplicationContext;
@@ -106,7 +107,13 @@ export default class MoreInformation extends Component {
             {order.is_my_order ? (
               <React.Fragment>
                 {order.state != null ? (
-                  <div>Breeder: {order.breeder}</div>
+                  <React.Fragment>
+                    <div>Breeder: {order.breeder}</div>
+                    <div>
+                      Price: {StringUtils.formatNumber(order.price)}
+                      <PokeDollar className="poke-dollar" />
+                    </div>
+                  </React.Fragment>
                 ) : (
                   <div>Order is not accepted yet</div>
                 )}
