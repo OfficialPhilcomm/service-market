@@ -3,6 +3,7 @@ import CloseablePopup from "../CloseablePopup";
 import BackendAPI from "../../../api/BackendAPI";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import { ReactComponent as PokeDollar } from "../../../img/poke-dollar.svg";
+import StringUtils from "../../../api/StringUtils";
 
 export default class ListOffersPopup extends Component {
   static contextType = ApplicationContext;
@@ -52,7 +53,7 @@ export default class ListOffersPopup extends Component {
                   <tr key={offer.id}>
                     <td>
                       <span>
-                        {offer.price}
+                        {StringUtils.formatNumber(offer.price)}
                         <PokeDollar className="poke-dollar" />
                       </span>
                     </td>

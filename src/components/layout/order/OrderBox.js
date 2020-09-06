@@ -6,6 +6,7 @@ import { ApplicationContext } from "../../../contexts/ApplicationContext";
 import StringUtils from "../../../api/StringUtils";
 import MakeOfferPopup from "../../popups/make_offer_popup/MakeOfferPopup";
 import PokeAPI from "../../../api/PokeAPI";
+import { ReactComponent as PokeDollar } from "../../../img/poke-dollar.svg";
 
 export default class OrderBox extends Component {
   static contextType = ApplicationContext;
@@ -121,9 +122,11 @@ export default class OrderBox extends Component {
         </div>
         <div className="buttons">
           {order.offer ? (
-            <span>
-              Offered: {order.offer.price} / {order.offer.days_needed}
-            </span>
+            <div>
+              You offered: {StringUtils.formatNumber(order.offer.price)}
+              <PokeDollar className="poke-dollar" /> / {order.offer.days_needed}{" "}
+              days
+            </div>
           ) : null}
           {order.offer_possible && !order.offer ? (
             <button className="rounded" onClick={this.openMakeOfferPopup}>

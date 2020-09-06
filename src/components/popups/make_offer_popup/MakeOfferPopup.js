@@ -3,6 +3,7 @@ import "./MakeOfferPopup.css";
 import CloseablePopup from "../CloseablePopup";
 import BackendAPI from "../../../api/BackendAPI";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
+import { ReactComponent as PokeDollar } from "../../../img/poke-dollar.svg";
 
 export default class MakeOfferPopup extends Component {
   static contextType = ApplicationContext;
@@ -48,10 +49,12 @@ export default class MakeOfferPopup extends Component {
                       placeholder="e.g. 100000"
                       ref={(input) => (this.inputPrice = input)}
                     />
+                    <span> </span>
+                    <PokeDollar className="poke-dollar" />
                   </td>
                 </tr>
                 <tr>
-                  <td>Days needed</td>
+                  <td>Time needed</td>
                   <td>
                     <input
                       type="number"
@@ -59,6 +62,7 @@ export default class MakeOfferPopup extends Component {
                       min={1}
                       ref={(input) => (this.inputDaysNeeded = input)}
                     />
+                    <span> days</span>
                   </td>
                 </tr>
                 <tr>
