@@ -1,3 +1,51 @@
 .more-information {
   padding: 14px;
 }
+
+.more-information .details {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.more-information .details .sprite {
+  width: 96px;
+  height: 96px;
+  margin: 6px;
+
+  image-rendering: pixelated;
+}
+
+.more-information .details .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.more-information .details .info .pokemon-name {
+  margin-bottom: 10px;
+}
+
+.more-information .details .moves-table {
+  margin-left: 10px;
+}
+
+.more-information .details .moves-table .move-container {
+  padding: 5px;
+}
+
+.more-information .details .moves-table .move-container .move {
+  border: 3px solid #707070;
+  border-radius: 5px;
+  min-width: 120px;
+  text-align: center;
+  padding: 4px 2px;
+}
+
+.more-information .stats {
+  width: 100%;
+}

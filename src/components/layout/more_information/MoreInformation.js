@@ -6,12 +6,15 @@ import StringUtils from "../../../api/StringUtils";
 import UpdateStatePopup from "../../popups/update_state_popup/UpdateStatePopup";
 import ProgressBar from "../../progressbar/ProgressBar";
 import ExportDataPopup from "../../popups/export_data/ExportDataPopup";
+import PokeAPI from "../../../api/PokeAPI";
+import PokeballImage from "../../../img/pokeball.svg";
 
 export default class MoreInformation extends Component {
   static contextType = ApplicationContext;
 
   state = {
     order: null,
+    imageURL: null,
     updateStatePopupOpen: false,
     exportDataPopupOpen: false,
   };
@@ -45,7 +48,11 @@ export default class MoreInformation extends Component {
       this.props.orderID
     );
 
-    this.setState({ order: result.order });
+    const sprite = await PokeAPI.getSpriteURL(
+      result.order.order_data.pokemon_name
+    );
+
+    this.setState({ order: result.order, imageUrl: sprite });
   };
 
   finishOrder = async () => {
@@ -72,6 +79,9 @@ export default class MoreInformation extends Component {
 
   render() {
     const order = this.state.order;
+    console.log(order);
+
+    const image = this.state.imageUrl;
 
     return (
       <div className="more-information">
@@ -91,59 +101,88 @@ export default class MoreInformation extends Component {
               />
             ) : null}
             {order.state !== null ? (
-              <React.Fragment>
-                <div>
-                  {StringUtils.humanize(StringUtils.stateToString(order.state))}
-                </div>
-                <ProgressBar finishedSteps={order.finished ? 5 : order.state} />
-              </React.Fragment>
+              <ProgressBar finishedSteps={order.finished ? 5 : order.state} />
             ) : null}
             {order.is_my_order ? (
               <React.Fragment>
                 {order.state != null ? (
-                  <div>Order is accepted by: {order.breeder}</div>
+                  <div>Breeder: {order.breeder}</div>
                 ) : (
                   <div>Order is not accepted yet</div>
                 )}
               </React.Fragment>
-            ) : (
-              <React.Fragment />
-            )}
-            <table>
+            ) : null}
+            <div className="details">
+              <img className="sprite" src={image ? image : PokeballImage} />
+              <div className="info">
+                <span className="pokemon-name">
+                  {StringUtils.humanize(order.order_data.pokemon_name)} lvl{" "}
+                  {order.order_data.level}
+                </span>
+                <span>Item: {StringUtils.humanize(order.order_data.item)}</span>
+                <span>
+                  Nature: {StringUtils.humanize(order.order_data.nature)}
+                </span>
+                <span>
+                  Ability: {StringUtils.humanize(order.order_data.ability)}
+                </span>
+              </div>
+              <table className="moves-table">
+                <tbody>
+                  <tr>
+                    <td className="move-container">
+                      <div className="move">
+                        {StringUtils.humanize(order.order_data.moves.move1)}
+                      </div>
+                    </td>
+                    <td className="move-container">
+                      <div className="move">
+                        {StringUtils.humanize(order.order_data.moves.move2)}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="move-container">
+                      <div className="move">
+                        {StringUtils.humanize(order.order_data.moves.move3)}
+                      </div>
+                    </td>
+                    <td className="move-container">
+                      <div className="move">
+                        {StringUtils.humanize(order.order_data.moves.move4)}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <table className="stats">
               <tbody>
                 <tr>
-                  <th></th>
+                  <th />
+                  <th>HP</th>
+                  <th>Atk</th>
+                  <th>Def</th>
+                  <th>SpAtk</th>
+                  <th>SpDef</th>
+                  <th>Speed</th>
+                </tr>
+                <tr>
                   <th>IV</th>
-                  <th>EV</th>
-                </tr>
-                <tr>
-                  <td>HP</td>
                   <td>{order.order_data.ivs.iv_hp}</td>
-                  <td>{order.order_data.evs.ev_hp}</td>
-                </tr>
-                <tr>
-                  <td>ATK</td>
                   <td>{order.order_data.ivs.iv_atk}</td>
-                  <td>{order.order_data.evs.ev_atk}</td>
-                </tr>
-                <tr>
-                  <td>DEF</td>
                   <td>{order.order_data.ivs.iv_def}</td>
-                  <td>{order.order_data.evs.ev_def}</td>
-                </tr>
-                <tr>
-                  <td>SPATK</td>
                   <td>{order.order_data.ivs.iv_spatk}</td>
-                  <td>{order.order_data.evs.ev_spatk}</td>
-                </tr>
-                <tr>
-                  <td>SPDEF</td>
                   <td>{order.order_data.ivs.iv_spdef}</td>
-                  <td>{order.order_data.evs.ev_spdef}</td>
+                  <td>{order.order_data.ivs.iv_spe}</td>
                 </tr>
                 <tr>
-                  <td>SPEED</td>
-                  <td>{order.order_data.ivs.iv_spe}</td>
+                  <th>EV</th>
+                  <td>{order.order_data.evs.ev_hp}</td>
+                  <td>{order.order_data.evs.ev_atk}</td>
+                  <td>{order.order_data.evs.ev_def}</td>
+                  <td>{order.order_data.evs.ev_spatk}</td>
+                  <td>{order.order_data.evs.ev_spdef}</td>
                   <td>{order.order_data.evs.ev_spe}</td>
                 </tr>
               </tbody>
