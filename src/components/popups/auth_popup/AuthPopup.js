@@ -22,7 +22,15 @@ export default class AuthPopup extends Component {
   }
 
   switchLoginOpen = () => {
-    this.setState({ loginOpen: !this.state.loginOpen });
+    this.loginUsername.value = "";
+    this.loginPassword.value = "";
+    this.registerUsername.value = "";
+    this.registerPassword.value = "";
+    this.setState({
+      loginOpen: !this.state.loginOpen,
+      loginError: null,
+      registerError: null,
+    });
   };
 
   handleLoginSubmit = async (event) => {
@@ -55,6 +63,11 @@ export default class AuthPopup extends Component {
         registerError: result.error,
       });
     }
+
+    this.loginUsername.value = "";
+    this.loginPassword.value = "";
+    this.registerUsername.value = "";
+    this.registerPassword.value = "";
   };
 
   render() {
