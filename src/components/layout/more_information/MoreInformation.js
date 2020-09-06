@@ -49,9 +49,9 @@ export default class MoreInformation extends Component {
       this.props.orderID
     );
 
-    const sprite = await PokeAPI.getSpriteURL(
-      result.order.order_data.pokemon_name
-    );
+    const sprite = result.order
+      ? await PokeAPI.getSpriteURL(result.order.order_data.pokemon_name)
+      : null;
 
     this.setState({ order: result.order, imageUrl: sprite });
   };
