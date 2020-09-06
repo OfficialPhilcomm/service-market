@@ -107,11 +107,11 @@ export default class OrderBox extends Component {
               {StringUtils.humanize(order.pokemon_name)} lvl {order.level}
             </span>
             <span>Item: {StringUtils.humanize(order.item)}</span>
+            <span>Nature: {StringUtils.humanize(order.nature)}</span>
             <span>Ability: {StringUtils.humanize(order.ability)}</span>
             <span>
               {this.thirtyOneCount()}x31 {this.thirtyCount()}x30
             </span>
-            <span>Nature: {StringUtils.humanize(order.nature)}</span>
           </div>
           <div className="moves">
             <span>{StringUtils.humanize(order.move1)}</span>
