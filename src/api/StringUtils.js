@@ -13,4 +13,8 @@ export default class StringUtils {
   static stateToString(state) {
     return this.states[state];
   }
+
+  static formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  }
 }
