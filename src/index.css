@@ -27,3 +27,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.poke-dollar {
+  display: inline-block;
+  width: auto;
+  height: 12pt;
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CloseablePopup from "../CloseablePopup";
 import BackendAPI from "../../../api/BackendAPI";
 import { ApplicationContext } from "../../../contexts/ApplicationContext";
+import { ReactComponent as PokeDollar } from "../../../img/poke-dollar.svg";
 
 export default class ListOffersPopup extends Component {
   static contextType = ApplicationContext;
@@ -38,7 +39,7 @@ export default class ListOffersPopup extends Component {
           <tbody>
             <tr>
               <th>Price</th>
-              <th>Days needed</th>
+              <th>Time needed</th>
               <th></th>
             </tr>
             {this.state.loading ? (
@@ -49,8 +50,13 @@ export default class ListOffersPopup extends Component {
               <React.Fragment>
                 {this.state.offers.map((offer) => (
                   <tr key={offer.id}>
-                    <td>{offer.price}</td>
-                    <td>{offer.days_needed}</td>
+                    <td>
+                      <span>
+                        {offer.price}
+                        <PokeDollar className="poke-dollar" />
+                      </span>
+                    </td>
+                    <td>{offer.days_needed} days</td>
                     <td>
                       <button
                         className="rounded"
