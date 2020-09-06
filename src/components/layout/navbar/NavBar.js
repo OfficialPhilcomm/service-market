@@ -7,7 +7,7 @@ export default class NavBar extends Component {
     return (
       <nav>
         <div className="title">
-          PokeMMO Breeding Market <span>(alpha)</span>
+          PokeMMO Breeding Market <span>(beta)</span>
         </div>
       </nav>
     );
