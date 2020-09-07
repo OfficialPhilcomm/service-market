@@ -64,10 +64,10 @@ export default class AuthPopup extends Component {
       });
     }
 
-    this.loginUsername.value = "";
-    this.loginPassword.value = "";
-    this.registerUsername.value = "";
-    this.registerPassword.value = "";
+    if (this.loginUsername) this.loginUsername.value = "";
+    if (this.loginPassword) this.loginPassword.value = "";
+    if (this.registerUsername) this.registerUsername.value = "";
+    if (this.registerPassword) this.registerPassword.value = "";
   };
 
   render() {
