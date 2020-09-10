@@ -98,7 +98,7 @@ export default class AuthPopup extends Component {
                     <td>
                       <input
                         type="text"
-                        name="username"
+                        name="login-username"
                         required
                         minLength={1}
                         ref={(input) => (this.loginUsername = input)}
@@ -110,7 +110,7 @@ export default class AuthPopup extends Component {
                     <td>
                       <input
                         type="password"
-                        name="password"
+                        name="login-password"
                         ref={(input) => (this.loginPassword = input)}
                       />
                     </td>
@@ -140,7 +140,7 @@ export default class AuthPopup extends Component {
                       <input
                         className="validation"
                         type="text"
-                        name="username"
+                        name="register-username"
                         minLength={4}
                         required
                         placeholder="min 4 characters"
@@ -154,7 +154,7 @@ export default class AuthPopup extends Component {
                       <input
                         className="validation"
                         type="password"
-                        name="password"
+                        name="register-password"
                         minLength={8}
                         required
                         placeholder="min 8 characters"
