@@ -143,7 +143,7 @@ export default class AuthPopup extends Component {
                         name="register-username"
                         minLength={4}
                         required
-                        placeholder="min 4 characters"
+                        placeholder="PokeMMO Username"
                         ref={(input) => (this.registerUsername = input)}
                       />
                     </td>
@@ -157,7 +157,7 @@ export default class AuthPopup extends Component {
                         name="register-password"
                         minLength={8}
                         required
-                        placeholder="min 8 characters"
+                        placeholder="not your PokeMMO password"
                         ref={(input) => (this.registerPassword = input)}
                       />
                     </td>
