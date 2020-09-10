@@ -99,6 +99,7 @@ export default class CreateOrderPopup extends Component {
                   <td>lvl</td>
                   <td>
                     <select ref={(select) => (this.selectLevel = select)}>
+                      <option value="1">1</option>
                       <option value="50">50</option>
                       <option value="100">100</option>
                     </select>
