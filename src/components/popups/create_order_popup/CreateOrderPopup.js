@@ -116,8 +116,12 @@ export default class CreateOrderPopup extends Component {
                       <td>
                         <select ref={(select) => (this.selectNature = select)}>
                           {PokeAPI.natureList.map((nature) => (
-                            <option value={nature} key={nature}>
-                              {StringUtils.humanize(nature)}
+                            <option value={nature.name} key={nature.name}>
+                              {nature.modifier
+                                ? `${StringUtils.humanize(nature.name)} (${
+                                    nature.modifier
+                                  })`
+                                : StringUtils.humanize(nature.name)}
                             </option>
                           ))}
                         </select>
