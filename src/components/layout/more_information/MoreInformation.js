@@ -80,7 +80,6 @@ export default class MoreInformation extends Component {
 
   render() {
     const order = this.state.order;
-    console.log(order);
 
     const image = this.state.imageUrl;
 

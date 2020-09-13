@@ -74,6 +74,8 @@ export default class CreateOrderPopup extends Component {
   render() {
     const p = this.state.p;
 
+    const moves = p ? p.data.moves.map((move) => move.move) : null;
+
     return (
       <CloseablePopup
         title="Create order"
@@ -164,18 +166,18 @@ export default class CreateOrderPopup extends Component {
                     <tr>
                       <td>
                         <select ref={(select) => (this.selectMove1 = select)}>
-                          {p.data.moves.map((move) => (
-                            <option value={move.move.name} key={move.move.name}>
-                              {StringUtils.humanize(move.move.name)}
+                          {moves.map((move) => (
+                            <option value={move.name} key={move.name}>
+                              {StringUtils.humanize(move.name)}
                             </option>
                           ))}
                         </select>
                       </td>
                       <td>
                         <select ref={(select) => (this.selectMove2 = select)}>
-                          {p.data.moves.map((move) => (
-                            <option value={move.move.name} key={move.move.name}>
-                              {StringUtils.humanize(move.move.name)}
+                          {moves.map((move) => (
+                            <option value={move.name} key={move.name}>
+                              {StringUtils.humanize(move.name)}
                             </option>
                           ))}
                         </select>
@@ -184,18 +186,18 @@ export default class CreateOrderPopup extends Component {
                     <tr>
                       <td>
                         <select ref={(select) => (this.selectMove3 = select)}>
-                          {p.data.moves.map((move) => (
-                            <option value={move.move.name} key={move.move.name}>
-                              {StringUtils.humanize(move.move.name)}
+                          {moves.map((move) => (
+                            <option value={move.name} key={move.name}>
+                              {StringUtils.humanize(move.name)}
                             </option>
                           ))}
                         </select>
                       </td>
                       <td>
                         <select ref={(select) => (this.selectMove4 = select)}>
-                          {p.data.moves.map((move) => (
-                            <option value={move.move.name} key={move.move.name}>
-                              {StringUtils.humanize(move.move.name)}
+                          {moves.map((move) => (
+                            <option value={move.name} key={move.name}>
+                              {StringUtils.humanize(move.name)}
                             </option>
                           ))}
                         </select>
